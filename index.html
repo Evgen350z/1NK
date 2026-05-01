@@ -7,11 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #020202;
+            --bg-color: #000000; /* Глубокий чистый черный */
             --text-main: #ffffff;
-            --text-muted: #999999;
-            --border-color: rgba(255,255,255,0.1);
-            --card-bg: rgba(15, 15, 15, 0.4);
+            --text-muted: #888888;
+            --border-color: rgba(255,255,255,0.08);
+            --card-bg: rgba(12, 12, 12, 0.6);
         }
 
         body { 
@@ -19,21 +19,20 @@
             font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
-        /* 1. ПРЕМИАЛЬНЫЙ ФОН: ШУМ И ПЛАВНЫЕ ГРАДИЕНТЫ */
+        /* ПРЕМИАЛЬНЫЙ ФОН: ЧИСТЫЙ И ГЛУБОКИЙ */
         .bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: var(--bg-color); overflow: hidden; }
-        .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+        .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.015; /* Почти незаметный шум */ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
         
-        .glow { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.6; mix-blend-mode: screen; }
-        .glow-1 { width: 50vw; height: 50vw; background: #1a103c; top: -10%; left: -10%; animation: drift1 15s infinite alternate ease-in-out; }
-        .glow-2 { width: 60vw; height: 60vw; background: #0a1930; bottom: -20%; right: -10%; animation: drift2 20s infinite alternate ease-in-out; }
-        .glow-3 { width: 45vw; height: 45vw; background: #150a21; top: 30%; left: 30%; animation: drift3 18s infinite alternate ease-in-out; }
+        /* Очень плавные, темные, незаметные свечения */
+        .glow { position: absolute; border-radius: 50%; filter: blur(180px); opacity: 0.4; }
+        .glow-1 { width: 60vw; height: 60vw; background: #080812; top: -10%; left: -10%; animation: drift1 20s infinite alternate ease-in-out; }
+        .glow-2 { width: 70vw; height: 70vw; background: #050a14; bottom: -20%; right: -10%; animation: drift2 25s infinite alternate ease-in-out; }
         
-        @keyframes drift1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(15%, 15%) scale(1.2); } }
-        @keyframes drift2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-15%, -10%) scale(1.1); } }
-        @keyframes drift3 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, 20%) scale(1.3); } }
+        @keyframes drift1 { 0% { transform: translate(0, 0); } 100% { transform: translate(10%, 10%); } }
+        @keyframes drift2 { 0% { transform: translate(0, 0); } 100% { transform: translate(-10%, -10%); } }
 
         /* НАВИГАЦИЯ */
-        nav { display: flex; justify-content: space-between; padding: 20px 40px; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; background: rgba(2, 2, 2, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        nav { display: flex; justify-content: space-between; padding: 20px 40px; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
         .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
         .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
@@ -41,7 +40,7 @@
         
         .lang-dropdown { position: relative; display: inline-block; }
         .lang-btn { background: transparent; color: #fff; border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 5px; padding: 0; }
-        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; background: #0a0a0a; min-width: 120px; border: 1px solid var(--border-color); border-radius: 8px; z-index: 200; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; background: #0a0a0a; min-width: 120px; border: 1px solid var(--border-color); border-radius: 8px; z-index: 200; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .lang-content a { color: var(--text-muted); padding: 12px 16px; text-decoration: none; display: block; font-size: 0.9rem; transition: 0.2s; }
         .lang-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
         .lang-dropdown:hover .lang-content { display: block; }
@@ -52,7 +51,7 @@
         .section-title { font-size: 3.5rem; font-weight: 500; letter-spacing: -1.5px; margin: 0 0 50px 0; line-height: 1.1; }
         
         .hero { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 80vh; justify-content: center; }
-        .badge { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #aaa; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(4px); }
+        .badge { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #aaa; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; }
         .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
         h1 { font-size: 5.5rem; font-weight: 500; letter-spacing: -2px; margin: 0; line-height: 1.05; max-width: 900px; }
         h1 span { color: #666; }
@@ -69,27 +68,15 @@
         /* КАРТОЧКИ УСЛУГ */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
         .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 40px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease; }
-        .card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-6px); background: rgba(25, 25, 25, 0.6); }
+        .card:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-6px); background: rgba(20, 20, 20, 0.8); }
         .card h3 { font-size: 1.5rem; margin: 0 0 16px 0; font-weight: 500; }
         .card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin: 0; }
 
-        /* 2. СТИЛЬНЫЙ АККОРДЕОН FAQ (В СТИЛЕ XTRACT) */
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 16px; backdrop-filter: blur(12px); transition: background 0.3s ease, border-color 0.3s ease; overflow: hidden; }
-        .faq-item:hover { background: rgba(25, 25, 25, 0.6); border-color: rgba(255,255,255,0.15); }
-        .faq-question { width: 100%; text-align: left; padding: 24px 32px; background: transparent; border: none; color: #fff; font-size: 1.15rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
-        .faq-icon { font-size: 1.5rem; color: #666; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; font-weight: 300; }
-        .faq-item.active { border-color: rgba(255,255,255,0.25); }
-        .faq-item.active .faq-question { color: #fff; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 0 32px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; }
-        .faq-item.active .faq-answer { padding-bottom: 32px; }
-
-        /* КАСТОМНЫЙ СКРОЛЛ КАРУСЕЛИ */
+        /* КАРУСЕЛЬ ЦЕН */
         .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
         .carousel-nav { display: flex; gap: 12px; }
-        .nav-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; font-size: 1.2rem; }
-        .nav-btn:hover { background: #fff; color: #000; transform: scale(1.05); }
+        .nav-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); color: #fff; border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; font-size: 1.2rem; }
+        .nav-btn:hover { background: rgba(255,255,255,0.1); transform: scale(1.05); }
         .carousel-container { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
         .carousel-container::-webkit-scrollbar { display: none; }
         .pricing-card { min-width: 360px; flex: 0 0 auto; scroll-snap-align: start; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 48px 40px; text-align: left; position: relative; backdrop-filter: blur(12px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -100,12 +87,37 @@
         ul.features { list-style: none; padding: 0; margin: 32px 0 40px 0; }
         ul.features li { padding: 12px 0; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 1.05rem; }
 
-        /* 3. APPLE-STYLE АНИМАЦИЯ ПОЯВЛЕНИЯ */
-        .reveal { opacity: 0; transform: translateY(60px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* ОТЗЫВЫ (TESTIMONIALS) */
+        .testimonials-wrapper { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 40px; }
+        .testi-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px; max-width: 800px; width: 100%; text-align: center; backdrop-filter: blur(12px); }
+        .quote-icon { font-size: 3rem; color: #fff; line-height: 1; margin-bottom: 20px; font-family: serif; }
+        .testi-text { font-size: 1.6rem; font-weight: 400; line-height: 1.4; margin-bottom: 40px; min-height: 140px; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-start; gap: 6px 8px; }
+        .testi-author { display: flex; align-items: center; justify-content: center; gap: 16px; opacity: 0; transform: translateY(10px); transition: all 0.5s ease; }
+        .testi-author.active { opacity: 1; transform: translateY(0); }
+        .testi-avatar { width: 48px; height: 48px; border-radius: 50%; background: #222; overflow: hidden; }
+        .testi-meta { text-align: left; }
+        .testi-name { font-weight: 500; font-size: 1rem; color: #fff; margin: 0; }
+        .testi-role { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+
+        /* FAQ АККОРДЕОН */
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; margin-bottom: 16px; backdrop-filter: blur(12px); transition: background 0.3s ease, border-color 0.3s ease; overflow: hidden; }
+        .faq-item:hover { background: rgba(20, 20, 20, 0.8); border-color: rgba(255,255,255,0.15); }
+        .faq-question { width: 100%; text-align: left; padding: 24px 32px; background: transparent; border: none; color: #fff; font-size: 1.15rem; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
+        .faq-icon { font-size: 1.5rem; color: #666; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease; font-weight: 300; }
+        .faq-item.active { border-color: rgba(255,255,255,0.25); }
+        .faq-item.active .faq-question { color: #fff; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), padding 0.5s cubic-bezier(0.16, 1, 0.3, 1); padding: 0 32px; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; }
+        .faq-item.active .faq-answer { padding-bottom: 32px; }
+
+        /* ПЛАВНАЯ КАСКАДНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
 
         /* МОДАЛЬНОЕ ОКНО ДЛЯ ЗАЯВКИ (n8n) */
         .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
@@ -114,11 +126,7 @@
         .modal.show .modal-content { transform: translateY(0) scale(1); }
         .close-btn { position: absolute; top: 20px; right: 24px; color: #888; font-size: 2rem; cursor: pointer; background: none; border: none; padding: 0; line-height: 1; transition: color 0.2s; }
         .close-btn:hover { color: #fff; }
-        .modal-title { margin-top: 0; font-size: 1.8rem; margin-bottom: 24px; font-weight: 500; letter-spacing: -0.5px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
-        .form-control { width: 100%; box-sizing: border-box; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: inherit; font-size: 1rem; transition: 0.3s; }
-        .form-control:focus { outline: none; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
+        .form-control { width: 100%; box-sizing: border-box; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 10px; color: #fff; font-family: inherit; font-size: 1rem; margin-bottom: 16px; }
 
         html { scroll-behavior: smooth; }
 
@@ -127,22 +135,18 @@
             .nav-links { display: none; }
             .section-title { font-size: 2.5rem; }
             .pricing-card { min-width: 85vw; }
-            .faq-question { padding: 20px; font-size: 1.05rem; }
-            .faq-answer { padding: 0 20px; }
+            .testi-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Улучшенный анимированный фон с шумом -->
     <div class="noise"></div>
     <div class="bg-animation">
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
-        <div class="glow glow-3"></div>
     </div>
 
-    <!-- Навигация -->
     <nav>
         <a href="index.html" class="logo">1NK</a>
         <div class="nav-links">
@@ -165,108 +169,110 @@
 
     <!-- Hero Section -->
     <section class="hero reveal">
-        <div class="badge"><span>NEW</span> AI Automation Systems</div>
-        <h1>Automate your business. <br><span>Scale without limits.</span></h1>
-        <p class="subtitle">We replace manual routines with intelligent systems. Save time, reduce human errors, and focus on what truly drives revenue.</p>
-        <div class="btn-group">
+        <div class="badge reveal delay-1"><span>NEW</span> AI Automation Systems</div>
+        <h1 class="reveal delay-2">Your business is not slow.<br><span>Your systems are.</span></h1>
+        <p class="subtitle reveal delay-3">We design AI-driven automation systems that replace manual operations, connect your tools, and reduce operational workload by up to 60–80%.</p>
+        <div class="btn-group reveal delay-4">
             <button onclick="openModal()" class="btn btn-primary">Book an Audit</button>
             <a href="#capabilities" class="btn btn-secondary">How it works</a>
         </div>
     </section>
 
-    <!-- Problem -->
-    <section class="reveal delay-1">
-        <span class="section-tag">Problem</span>
-        <h2 class="section-title">Most businesses don’t have a scaling problem.</h2>
+    <!-- Stats Block -->
+    <section>
         <div class="grid">
-            <div class="card delay-1">
+            <div class="card reveal delay-1">
+                <h3>↓ Up to 80% less manual work</h3>
+                <p>Automated workflows replace repetitive operations across your business.</p>
+            </div>
+            <div class="card reveal delay-2">
+                <h3>↑ Faster execution speed</h3>
+                <p>Processes run instantly instead of waiting on human input.</p>
+            </div>
+            <div class="card reveal delay-3">
+                <h3>∞ Scalable infrastructure</h3>
+                <p>Systems that grow with your business without increasing operational load.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem -->
+    <section>
+        <span class="section-tag reveal delay-1">Problem</span>
+        <h2 class="section-title reveal delay-2">Most businesses don’t have a scaling problem.</h2>
+        <div class="grid">
+            <div class="card reveal delay-1">
                 <h3>Disconnected Systems</h3>
                 <p>Too many tools that don’t communicate. Data is scattered, duplicated, and unreliable.</p>
             </div>
-            <div class="card delay-2">
+            <div class="card reveal delay-2">
                 <h3>Manual Overload</h3>
                 <p>Your team spends hours on repetitive tasks instead of focusing on growth.</p>
             </div>
-            <div class="card delay-3">
+            <div class="card reveal delay-3">
                 <h3>Automation That Failed</h3>
                 <p>Half-built systems, broken integrations, and solutions that never worked as promised.</p>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="reveal">
-        <span class="section-tag">About Us</span>
-        <h2 class="section-title">Built for the future of business.</h2>
-        <div class="grid">
-            <div class="card delay-1" style="grid-column: 1 / -1;">
-                <h3>The 1NK Vision</h3>
-                <p>Headquartered in Germany, 1NK pioneers the integration of artificial intelligence and advanced business automation. Our mission is to architect infrastructures that allow businesses to operate with unprecedented precision and efficiency. We don't just provide software; we build robust engines for your company's growth, reflecting the highest standards of technological engineering.</p>
+    <!-- Reviews / Testimonials -->
+    <section id="reviews">
+        <span class="section-tag reveal delay-1" style="text-align: center; display: block;">Testimonials</span>
+        <h2 class="section-title reveal delay-2" style="text-align: center;">Don't take our word for it.</h2>
+        
+        <div class="testimonials-wrapper reveal delay-3">
+            <button class="nav-btn" onclick="prevReview()">&#8249;</button>
+            
+            <div class="testi-card">
+                <div class="quote-icon">"</div>
+                <div class="testi-text" id="testi-text"></div>
+                
+                <div class="testi-author" id="testi-author">
+                    <div class="testi-avatar">
+                        <!-- Заглушка для фото (можно заменить на <img>) -->
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="48" height="48" fill="#333"/>
+                            <circle cx="24" cy="18" r="8" fill="#555"/>
+                            <path d="M12 40C12 33.3726 17.3726 28 24 28C30.6274 28 36 33.3726 36 40V48H12V40Z" fill="#555"/>
+                        </svg>
+                    </div>
+                    <div class="testi-meta">
+                        <p class="testi-name" id="testi-name"></p>
+                        <p class="testi-role" id="testi-role"></p>
+                    </div>
+                </div>
             </div>
+
+            <button class="nav-btn" onclick="nextReview()">&#8250;</button>
         </div>
     </section>
 
     <!-- Capabilities -->
-    <section id="capabilities" class="reveal">
-        <span class="section-tag">Capabilities</span>
-        <h2 class="section-title">Everything you need to automate.</h2>
+    <section id="capabilities">
+        <span class="section-tag reveal delay-1">Capabilities</span>
+        <h2 class="section-title reveal delay-2">Everything you need to automate.</h2>
         <div class="grid">
-            <div class="card delay-1">
+            <div class="card reveal delay-1">
                 <h3>Custom Integrations</h3>
                 <p>Connect all your tools into one seamless ecosystem. We eliminate data silos and manual entry through smart API connections.</p>
             </div>
-            <div class="card delay-2">
+            <div class="card reveal delay-2">
                 <h3>Workflow Optimization</h3>
                 <p>Transform manual workflows into fast, automated pipelines. We optimize internal processes from document generation to financial reporting.</p>
             </div>
-            <div class="card delay-3">
+            <div class="card reveal delay-3">
                 <h3>AI Autonomous Agents</h3>
                 <p>Deploy intelligent systems that handle client communication, lead qualification, and dynamic problem-solving 24/7.</p>
             </div>
         </div>
     </section>
 
-    <!-- Process -->
-    <section id="process" class="reveal">
-        <span class="section-tag">Process</span>
-        <h2 class="section-title">How we build systems that scale.</h2>
-        <div class="grid">
-            <div class="card delay-1">
-                <h3>01 — Audit & Strategy</h3>
-                <p>We analyze your current workflows, identify inefficiencies, and define a clear automation roadmap.</p>
-            </div>
-            <div class="card delay-2">
-                <h3>02 — System Architecture</h3>
-                <p>We design a structured, scalable system tailored to your business operations.</p>
-            </div>
-            <div class="card delay-3">
-                <h3>03 — Implementation</h3>
-                <p>We build and integrate automation across your entire ecosystem.</p>
-            </div>
-            <div class="card delay-1">
-                <h3>04 — Optimization</h3>
-                <p>We refine, scale, and ensure your systems perform under real business pressure.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Complex Systems -->
-    <section class="reveal">
-        <span class="section-tag">Complex Systems</span>
-        <h2 class="section-title">We take over where others failed.</h2>
-        <div class="grid">
-            <div class="card delay-1" style="grid-column: 1 / -1;">
-                <h3>High-friction projects. Broken systems. Abandoned automation.</h3>
-                <p>Most of our clients come to us after failed attempts to automate their business. We step into complex, unstable environments — and turn them into systems that simply work.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing (Carousel) -->
-    <section id="pricing" class="reveal">
-        <span class="section-tag">Pricing</span>
+    <!-- Pricing -->
+    <section id="pricing">
+        <span class="section-tag reveal delay-1">Pricing</span>
         
-        <div class="pricing-header">
+        <div class="pricing-header reveal delay-2">
             <h2 class="section-title" style="margin-bottom: 0;">Transparent infrastructure.</h2>
             <div class="carousel-nav">
                 <button class="nav-btn" id="prevBtn">&#8592;</button>
@@ -274,7 +280,7 @@
             </div>
         </div>
 
-        <div class="carousel-container delay-1" id="pricingCarousel">
+        <div class="carousel-container reveal delay-3" id="pricingCarousel">
             <div class="pricing-card">
                 <h3>Audit & Strategy</h3>
                 <div class="price">€1,500<span>/project</span></div>
@@ -310,47 +316,15 @@
                 </ul>
                 <button onclick="openModal()" class="btn btn-secondary" style="width: 100%;">Get Started</button>
             </div>
-
-            <div class="pricing-card">
-                <h3>Enterprise Infrastructure</h3>
-                <div class="price">Custom</div>
-                <p style="color: var(--text-muted);">Full-scale automation deployment.</p>
-                <ul class="features">
-                    <li>Complex ecosystem integration</li>
-                    <li>Dedicated server setup</li>
-                    <li>Full team training & handover</li>
-                </ul>
-                <button onclick="openModal()" class="btn btn-secondary" style="width: 100%;">Get a Quote</button>
-            </div>
         </div>
     </section>
 
-    <!-- Fit / Not Fit -->
-    <section class="reveal">
-        <span class="section-tag">Fit</span>
-        <h2 class="section-title">Who this is for.</h2>
-        <div class="grid">
-            <div class="card delay-1">
-                <h3>Scaling Companies</h3>
-                <p>Businesses that need structure to handle growth without chaos.</p>
-            </div>
-            <div class="card delay-2">
-                <h3>Operationally Complex Teams</h3>
-                <p>Companies with multiple tools, workflows, and dependencies.</p>
-            </div>
-            <div class="card delay-3">
-                <h3>Founders Who Value Time</h3>
-                <p>Leaders who want systems — not more manual work.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. ПРЕМИАЛЬНЫЙ БЛОК FAQ С АККОРДЕОНОМ -->
-    <section id="faq" class="reveal">
-        <span class="section-tag">FAQ</span>
-        <h2 class="section-title" style="text-align: center;">Questions, answered.</h2>
+    <!-- NEW FAQ -->
+    <section id="faq">
+        <span class="section-tag reveal delay-1">FAQ</span>
+        <h2 class="section-title reveal delay-2" style="text-align: center;">Questions, answered.</h2>
         
-        <div class="faq-container delay-1">
+        <div class="faq-container reveal delay-3">
             
             <div class="faq-item">
                 <button class="faq-question">How long does implementation take? <span class="faq-icon">+</span></button>
@@ -406,11 +380,11 @@
     </section>
 
     <!-- Final CTA -->
-    <section class="reveal">
-        <span class="section-tag">Final Step</span>
-        <h2 class="section-title">Your business is only as fast as your systems.</h2>
+    <section>
+        <span class="section-tag reveal delay-1">Final Step</span>
+        <h2 class="section-title reveal delay-2">Your business is only as fast as your systems.</h2>
         <div class="grid">
-            <div class="card delay-1" style="grid-column: 1 / -1; text-align: center; border-color: rgba(255,255,255,0.2);">
+            <div class="card reveal delay-3" style="grid-column: 1 / -1; text-align: center; border-color: rgba(255,255,255,0.2);">
                 <h3>Fix the bottleneck.</h3>
                 <p style="max-width: 600px; margin: 0 auto 40px; color: var(--text-muted); line-height: 1.6;">
                     If your operations feel slower than they should — it's not your team.  
@@ -436,56 +410,30 @@
             <h3 class="modal-title">Request an Audit</h3>
             
             <form action="YOUR_N8N_WEBHOOK_URL" method="POST">
-                <div class="form-group">
-                    <label>Your Name</label>
-                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
-                </div>
-                <div class="form-group">
-                    <label>Work Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="john@company.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Company Name</label>
-                    <input type="text" name="company" class="form-control" placeholder="Acme Corp">
-                </div>
+                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                <input type="email" name="email" class="form-control" placeholder="Work Email" required>
+                <input type="text" name="company" class="form-control" placeholder="Company Name">
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Submit Request</button>
             </form>
         </div>
     </div>
 
-    <!-- СКРИПТЫ (Анимации, Карусель, FAQ, Модалка) -->
+    <!-- СКРИПТЫ -->
     <script>
-        // Дорогая плавная анимация появления при прокрутке
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal, .card, .faq-container");
-            var windowHeight = window.innerHeight;
-            for (var i = 0; i < reveals.length; i++) {
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                // Срабатывает чуть раньше для большей плавности
-                if (elementTop < windowHeight - 80) { 
-                    reveals[i].classList.add("active"); 
+        // 1. УМНАЯ АНИМАЦИЯ ПОЯВЛЕНИЯ ПРИ ПРОКРУТКЕ
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
                 }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Вызов при старте
+            });
+        }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-        // Карусель (Стрелочки)
-        const carousel = document.getElementById('pricingCarousel');
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtn = document.getElementById('prevBtn');
-        if(nextBtn && prevBtn && carousel) {
-            nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: carousel.querySelector('.pricing-card').offsetWidth + 24, behavior: 'smooth' }); });
-            prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -(carousel.querySelector('.pricing-card').offsetWidth + 24), behavior: 'smooth' }); });
-        }
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
 
-        // Модальное окно
-        const modal = document.getElementById('leadModal');
-        function openModal() { modal.classList.add('show'); }
-        function closeModal() { modal.classList.remove('show'); }
-        window.addEventListener('click', (e) => { if (e.target === modal) { closeModal(); } });
-
-        // Аккордеон FAQ
+        // 2. АККОРДЕОН FAQ
         const faqQuestions = document.querySelectorAll('.faq-question');
         faqQuestions.forEach(question => {
             question.addEventListener('click', () => {
@@ -493,19 +441,98 @@
                 const answer = question.nextElementSibling;
                 const isActive = parent.classList.contains('active');
 
-                // Закрываем все остальные вкладки
                 document.querySelectorAll('.faq-item').forEach(item => {
                     item.classList.remove('active');
                     item.querySelector('.faq-answer').style.maxHeight = null;
                 });
 
-                // Если кликнули по закрытой - открываем её с правильной высотой
                 if (!isActive) {
                     parent.classList.add('active');
                     answer.style.maxHeight = answer.scrollHeight + "px";
                 }
             });
         });
+
+        // 3. КАСТОМНАЯ КАРУСЕЛЬ ЦЕН
+        const carousel = document.getElementById('pricingCarousel');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        if(nextBtn && prevBtn && carousel) {
+            nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: 384, behavior: 'smooth' }); });
+            prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -384, behavior: 'smooth' }); });
+        }
+
+        // 4. МОДАЛЬНОЕ ОКНО
+        const modal = document.getElementById('leadModal');
+        function openModal() { modal.classList.add('show'); }
+        function closeModal() { modal.classList.remove('show'); }
+        window.addEventListener('click', (e) => { if (e.target === modal) { closeModal(); } });
+
+        // 5. ЛОГИКА ОТЗЫВОВ С ЭФФЕКТОМ ПЕЧАТИ
+        const reviews = [
+            { text: "Before working with 1NK, our internal processes were completely fragmented. We had tools everywhere, but nothing worked together. Within a few weeks, everything was connected into one system, and our team finally stopped wasting time on manual work.", name: "Michael R.", role: "Operations Manager, Logistics Company" },
+            { text: "I didn’t expect this level of depth. They didn’t just automate tasks — they restructured how our business actually operates. It feels like we upgraded from manual control to a fully coordinated system.", name: "Daniel K.", role: "Founder, E-commerce Brand" },
+            { text: "We were at a point where scaling meant hiring more people just to keep up. After implementing their system, we actually reduced workload while increasing output. That changed everything.", name: "Sarah L.", role: "Head of Operations, SaaS Company" },
+            { text: "I’ve worked with multiple automation providers before, but this is different. They think in systems, not tools. The difference is massive when you’re running a real business.", name: "Thomas B.", role: "CEO, Manufacturing Company" },
+            { text: "We used to spend hours every day moving data between systems. Now it just happens automatically. No errors, no stress, no manual work.", name: "Alex M.", role: "Team Lead, Sales Department" }
+        ];
+
+        let currentReviewIndex = 0;
+        let isAnimating = false;
+
+        function renderReview(index) {
+            if(isAnimating) return;
+            isAnimating = true;
+
+            const textContainer = document.getElementById('testi-text');
+            const authorContainer = document.getElementById('testi-author');
+            
+            authorContainer.classList.remove('active');
+            textContainer.innerHTML = '';
+
+            document.getElementById('testi-name').innerText = reviews[index].name;
+            document.getElementById('testi-role').innerText = reviews[index].role;
+
+            const words = reviews[index].text.split(' ');
+            
+            words.forEach((word, i) => {
+                const span = document.createElement('span');
+                span.innerText = word;
+                span.style.opacity = '0';
+                span.style.transform = 'translateY(10px)';
+                span.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                span.style.transitionDelay = `${i * 0.04}s`; // Плавная задержка каждого слова
+                textContainer.appendChild(span);
+
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                    span.style.transform = 'translateY(0)';
+                }, 50);
+            });
+
+            setTimeout(() => {
+                authorContainer.classList.add('active');
+                isAnimating = false;
+            }, words.length * 40 + 400); // Показываем автора после текста
+        }
+
+        function nextReview() {
+            if(!isAnimating) {
+                currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+                renderReview(currentReviewIndex);
+            }
+        }
+
+        function prevReview() {
+            if(!isAnimating) {
+                currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
+                renderReview(currentReviewIndex);
+            }
+        }
+
+        // Запуск первого отзыва
+        renderReview(0);
+
     </script>
 </body>
 </html>
