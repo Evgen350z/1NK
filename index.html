@@ -14,48 +14,33 @@
         }
 
         body { 
-            margin: 0; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            font-family: 'Inter', sans-serif; 
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
+            margin: 0; background-color: var(--bg-color); color: var(--text-main); 
+            font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
         }
 
-        /* АНИМАЦИЯ ФОНА */
-        .bg-animation {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: var(--bg-color);
-        }
-        .glow {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: float 10s infinite alternate ease-in-out;
-        }
+        /* ФОН */
+        .bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; background: var(--bg-color); }
+        .glow { position: absolute; border-radius: 50%; filter: blur(100px); animation: float 10s infinite alternate ease-in-out; }
         .glow-1 { width: 50vw; height: 50vw; background: rgba(80, 80, 150, 0.2); top: -10%; left: -10%; }
         .glow-2 { width: 60vw; height: 60vw; background: rgba(50, 50, 100, 0.25); bottom: -10%; right: -10%; animation-delay: -3s; }
-        
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(15%, 15%) scale(1.2); }
-        }
+        @keyframes float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(15%, 15%) scale(1.2); } }
 
         /* НАВИГАЦИЯ */
-        nav { 
-            display: flex; justify-content: space-between; padding: 20px 40px; 
-            align-items: center; border-bottom: 1px solid var(--border-color);
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
-        }
+        nav { display: flex; justify-content: space-between; padding: 20px 40px; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); }
         .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
-        .nav-links { display: flex; gap: 30px; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-main); }
         
+        /* ВЫПАДАЮЩЕЕ МЕНЮ ЯЗЫКОВ */
+        .lang-dropdown { position: relative; display: inline-block; }
+        .lang-btn { background: transparent; color: #fff; border: none; font-size: 0.9rem; font-weight: 500; cursor: pointer; font-family: inherit; display: flex; align-items: center; gap: 5px; padding: 0; }
+        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 10px; background: #111; min-width: 120px; border: 1px solid var(--border-color); border-radius: 8px; z-index: 200; overflow: hidden; }
+        .lang-content a { color: var(--text-muted); padding: 12px 16px; text-decoration: none; display: block; font-size: 0.9rem; transition: 0.2s; }
+        .lang-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .lang-dropdown:hover .lang-content { display: block; }
+
+        /* БАЗОВЫЕ СТИЛИ */
         section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
         .section-tag { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
         .section-title { font-size: 3rem; font-weight: 500; letter-spacing: -1px; margin: 0 0 40px 0; }
@@ -67,45 +52,47 @@
         h1 span { color: #666; }
         .subtitle { color: var(--text-muted); font-size: 1.25rem; max-width: 600px; margin: 24px auto 40px; line-height: 1.6; }
         
+        /* КНОПКИ */
         .btn-group { display: flex; gap: 16px; justify-content: center; }
-        .btn { padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 500; text-decoration: none; transition: 0.2s; scroll-behavior: smooth; }
+        .btn { padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: 0.2s; font-family: inherit; }
         .btn-primary { background: #fff; color: #000; }
         .btn-primary:hover { background: #e0e0e0; }
         .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
         .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
+        /* КАРТОЧКИ УСЛУГ И ЦЕН (БЕЗ ИЗМЕНЕНИЙ) */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
         .card { background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; backdrop-filter: blur(10px); transition: border-color 0.3s ease, transform 0.3s ease; }
         .card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-5px); }
         .card h3 { font-size: 1.5rem; margin: 0 0 16px 0; font-weight: 500; }
         .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0; }
 
-        /* КАРУСЕЛЬ ДЛЯ ЦЕН */
         .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
         .carousel-nav { display: flex; gap: 12px; }
         .nav-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; font-size: 1.2rem; }
         .nav-btn:hover { background: #fff; color: #000; }
-        
-        .carousel-container { 
-            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
-            padding-bottom: 20px;
-            -ms-overflow-style: none; scrollbar-width: none; 
-        }
+        .carousel-container { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none; }
         .carousel-container::-webkit-scrollbar { display: none; }
-        
-        .pricing-card { 
-            min-width: 340px; flex: 0 0 auto; scroll-snap-align: start;
-            background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); 
-            border-radius: 16px; padding: 40px; text-align: left; position: relative; 
-            backdrop-filter: blur(10px); transition: border-color 0.3s ease;
-        }
+        .pricing-card { min-width: 340px; flex: 0 0 auto; scroll-snap-align: start; background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; text-align: left; position: relative; backdrop-filter: blur(10px); transition: border-color 0.3s ease; }
         .pricing-card:hover { border-color: rgba(255,255,255,0.25); }
         .pricing-card.popular { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.3); }
-        
         .price { font-size: 3rem; font-weight: 500; margin: 20px 0; }
         .price span { font-size: 1rem; color: var(--text-muted); }
         ul.features { list-style: none; padding: 0; margin: 30px 0; }
         ul.features li { padding: 10px 0; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        /* МОДАЛЬНОЕ ОКНО ДЛЯ ЗАЯВКИ (n8n) */
+        .modal { display: none; position: fixed; z-index: 999; left: 0; top: 0; width: 100vw; height: 100vh; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(8px); justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        .modal.show { display: flex; opacity: 1; }
+        .modal-content { background: #0a0a0a; border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; width: 90%; max-width: 400px; position: relative; text-align: left; transform: translateY(20px); transition: transform 0.3s ease; }
+        .modal.show .modal-content { transform: translateY(0); }
+        .close-btn { position: absolute; top: 20px; right: 24px; color: #888; font-size: 1.8rem; cursor: pointer; background: none; border: none; padding: 0; }
+        .close-btn:hover { color: #fff; }
+        .modal-title { margin-top: 0; font-size: 1.5rem; margin-bottom: 24px; font-weight: 500; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+        .form-control { width: 100%; box-sizing: border-box; padding: 14px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); border-radius: 8px; color: #fff; font-family: inherit; font-size: 1rem; transition: 0.2s; }
+        .form-control:focus { outline: none; border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
@@ -130,22 +117,34 @@
         <div class="glow glow-2"></div>
     </div>
 
+    <!-- Обновленная навигация -->
     <nav>
         <a href="index.html" class="logo">1NK</a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#capabilities">Capabilities</a>
             <a href="#pricing">Pricing</a>
-            <a href="#" style="color: #fff;">EN</a>
+            <a href="blog.html">Blog</a> <!-- Ссылка на будущий блог -->
+            
+            <!-- Выпадающее меню языка -->
+            <div class="lang-dropdown">
+                <button class="lang-btn">EN <span style="font-size: 0.7rem;">▼</span></button>
+                <div class="lang-content">
+                    <a href="index.html">English</a>
+                    <a href="de.html">Deutsch</a>
+                </div>
+            </div>
         </div>
     </nav>
 
+    <!-- Обновленный главный экран с кнопкой заявки -->
     <section class="hero reveal">
         <div class="badge"><span>NEW</span> AI Automation Systems</div>
         <h1>Automate your business. <br><span>Scale without limits.</span></h1>
         <p class="subtitle">We replace manual routines with intelligent systems. Save time, reduce human errors, and focus on what truly drives revenue.</p>
         <div class="btn-group">
-            <a href="#capabilities" class="btn btn-primary">Explore Solutions</a>
+            <button onclick="openModal()" class="btn btn-primary">Book an Audit</button>
+            <a href="#capabilities" class="btn btn-secondary">How it works</a>
         </div>
     </section>
 
@@ -191,7 +190,6 @@
         </div>
 
         <div class="carousel-container delay-1" id="pricingCarousel">
-            
             <div class="pricing-card">
                 <h3>Audit & Strategy</h3>
                 <div class="price">€1,500<span>/project</span></div>
@@ -201,7 +199,7 @@
                     <li>Bottleneck identification</li>
                     <li>Custom automation roadmap</li>
                 </ul>
-                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">Book Audit</a>
+                <button onclick="openModal()" class="btn btn-secondary" style="width: 100%;">Book Audit</button>
             </div>
 
             <div class="pricing-card popular">
@@ -213,7 +211,7 @@
                     <li>CRM integration</li>
                     <li>Lead qualification logic</li>
                 </ul>
-                <a href="#" class="btn btn-primary" style="display: block; text-align: center;">Get Started</a>
+                <button onclick="openModal()" class="btn btn-primary" style="width: 100%;">Get Started</button>
             </div>
 
             <div class="pricing-card">
@@ -225,7 +223,7 @@
                     <li>Data synchronization</li>
                     <li>Automated reporting pipelines</li>
                 </ul>
-                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">View Details</a>
+                <button onclick="openModal()" class="btn btn-secondary" style="width: 100%;">Get Started</button>
             </div>
 
             <div class="pricing-card">
@@ -237,42 +235,66 @@
                     <li>Dedicated server setup</li>
                     <li>Full team training & handover</li>
                 </ul>
-                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">Get a Quote</a>
+                <button onclick="openModal()" class="btn btn-secondary" style="width: 100%;">Get a Quote</button>
             </div>
-
         </div>
     </section>
 
+    <!-- МОДАЛЬНОЕ ОКНО ФОРМЫ (Скрыто по умолчанию) -->
+    <div id="leadModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title">Request an Audit</h3>
+            
+            <!-- Форма для n8n. Замените YOUR_N8N_WEBHOOK_URL на вашу ссылку -->
+            <form action="YOUR_N8N_WEBHOOK_URL" method="POST">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Work Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="john@company.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" name="company" class="form-control" placeholder="Acme Corp">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Submit Request</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <!-- Скрипты (Скролл, Карусель, Модальное окно) -->
     <script>
+        // Анимация при скролле
         function reveal() {
             var reveals = document.querySelectorAll(".reveal, .card");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
+                if (elementTop < windowHeight - 100) { reveals[i].classList.add("active"); }
             }
         }
         window.addEventListener("scroll", reveal);
         reveal();
 
+        // Карусель
         const carousel = document.getElementById('pricingCarousel');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
-
         if(nextBtn && prevBtn && carousel) {
-            nextBtn.addEventListener('click', () => {
-                const cardWidth = carousel.querySelector('.pricing-card').offsetWidth;
-                carousel.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
-            });
-            prevBtn.addEventListener('click', () => {
-                const cardWidth = carousel.querySelector('.pricing-card').offsetWidth;
-                carousel.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
-            });
+            nextBtn.addEventListener('click', () => { carousel.scrollBy({ left: carousel.querySelector('.pricing-card').offsetWidth + 24, behavior: 'smooth' }); });
+            prevBtn.addEventListener('click', () => { carousel.scrollBy({ left: -(carousel.querySelector('.pricing-card').offsetWidth + 24), behavior: 'smooth' }); });
         }
+
+        // Логика Модального окна (Формы)
+        const modal = document.getElementById('leadModal');
+        function openModal() { modal.classList.add('show'); }
+        function closeModal() { modal.classList.remove('show'); }
+        // Закрытие при клике мимо окна
+        window.addEventListener('click', (e) => { if (e.target === modal) { closeModal(); } });
     </script>
 </body>
 </html>
