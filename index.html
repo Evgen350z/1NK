@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1NK | Business Automation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые настройки (Стиль Tesla / Xtract) */
+        body { 
+            margin: 0; 
+            background-color: #050505; /* Очень темный фон */
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Верхнее меню (Навигация) */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 20px 40px; 
+            align-items: center; 
+            border-bottom: 1px solid rgba(255,255,255,0.05); 
+        }
+        .logo { 
+            font-weight: 600; 
+            font-size: 1.5rem; 
+            letter-spacing: 1px; 
+        }
+        .lang-switch a { 
+            color: #666; 
+            text-decoration: none; 
+            margin-left: 20px; 
+            font-size: 0.9rem; 
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .lang-switch a.active, .lang-switch a:hover { 
+            color: #fff; 
+        }
+        
+        /* Главный экран */
+        .hero { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            padding: 120px 20px; 
+        }
+        
+        /* Маленькая плашка над заголовком */
+        .badge { 
+            background: rgba(255,255,255,0.05); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            padding: 6px 16px; 
+            border-radius: 50px; 
+            font-size: 0.85rem; 
+            color: #aaa; 
+            margin-bottom: 30px; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 10px;
+        }
+        .badge span { 
+            background: #fff; 
+            color: #000; 
+            padding: 2px 8px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            font-size: 0.75rem;
+        }
+        
+        /* Главный заголовок */
+        h1 { 
+            font-size: 4.5rem; 
+            font-weight: 500; 
+            letter-spacing: -2px; 
+            margin: 0; 
+            line-height: 1.1; 
+            max-width: 900px; 
+        }
+        h1 span { 
+            color: #777; /* Серый акцент в тексте */
+        }
+        
+        /* Текст под заголовком */
+        p.subtitle { 
+            color: #888; 
+            font-size: 1.25rem; 
+            max-width: 600px; 
+            margin: 24px auto 40px; 
+            line-height: 1.6; 
+        }
+        
+        /* Кнопки */
+        .btn-group { 
+            display: flex; 
+            gap: 16px; 
+            justify-content: center; 
+        }
+        .btn { 
+            padding: 14px 32px; 
+            border-radius: 8px; 
+            font-size: 1rem; 
+            font-weight: 500; 
+            text-decoration: none; 
+            transition: all 0.2s; 
+        }
+        .btn-primary { 
+            background: #fff; 
+            color: #000; 
+        }
+        .btn-primary:hover { 
+            background: #e0e0e0; 
+        }
+        .btn-secondary { 
+            background: transparent; 
+            color: #fff; 
+            border: 1px solid rgba(255,255,255,0.2); 
+        }
+        .btn-secondary:hover { 
+            border-color: #fff; 
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Карточки с услугами (Bento Grid) */
+        .services {
+            padding: 40px 20px 100px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #0a0a0a;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 32px;
+            transition: border-color 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(255,255,255,0.25);
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            margin: 0 0 12px 0;
+            font-weight: 500;
+        }
+        .card p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Адаптация под телефоны и планшеты */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            nav { padding: 20px; }
+            .btn-group { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Меню с логотипом и выбором языка -->
+    <nav>
+        <div class="logo">1NK</div>
+        <div class="lang-switch">
+            <a href="index.html" class="active">EN</a>
+            <a href="de.html">DE</a>
+        </div>
+    </nav>
+
+    <!-- Главный блок с заголовком -->
+    <section class="hero">
+        <div class="badge"><span>NEW</span> Workflow Solutions</div>
+        
+        <h1>Automate your business. <br><span>Scale without limits.</span></h1>
+        
+        <p class="subtitle">We replace manual routines with intelligent systems. Save time, reduce human errors, and focus on what truly drives revenue.</p>
+        
+        <div class="btn-group">
+            <a href="#book" class="btn btn-primary">Book an Audit</a>
+            <a href="#services" class="btn btn-secondary">How it works</a>
+        </div>
+    </section>
+
+    <!-- Карточки услуг -->
+    <section id="services" class="services">
+        <div class="grid">
+            <div class="card">
+                <h3>Custom Integrations</h3>
+                <p>Connect all your tools into one seamless ecosystem. No more data silos or manual entry.</p>
+            </div>
+            <div class="card">
+                <h3>AI Support Agents</h3>
+                <p>Automate client communication and lead qualification 24/7 with intelligent chatbots.</p>
+            </div>
+            <div class="card">
+                <h3>Process Optimization</h3>
+                <p>Streamline internal processes. From document generation to automated reporting.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
