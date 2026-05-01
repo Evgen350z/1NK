@@ -11,7 +11,6 @@
             --text-main: #ffffff;
             --text-muted: #888888;
             --border-color: rgba(255,255,255,0.08);
-            --accent-glow: rgba(60, 60, 100, 0.3);
         }
 
         body { 
@@ -23,7 +22,7 @@
             overflow-x: hidden;
         }
 
-        /* АНИМИРОВАННЫЙ ФОН */
+        /* АНИМАЦИЯ ФОНА */
         .bg-animation {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -34,15 +33,15 @@
         .glow {
             position: absolute;
             border-radius: 50%;
-            filter: blur(120px);
-            animation: float 20s infinite alternate ease-in-out;
+            filter: blur(100px);
+            animation: float 10s infinite alternate ease-in-out;
         }
-        .glow-1 { width: 50vw; height: 50vw; background: rgba(40, 40, 60, 0.4); top: -20%; left: -10%; }
-        .glow-2 { width: 40vw; height: 40vw; background: rgba(20, 20, 30, 0.5); bottom: -10%; right: -10%; animation-delay: -5s; }
+        .glow-1 { width: 50vw; height: 50vw; background: rgba(80, 80, 150, 0.2); top: -10%; left: -10%; }
+        .glow-2 { width: 60vw; height: 60vw; background: rgba(50, 50, 100, 0.25); bottom: -10%; right: -10%; animation-delay: -3s; }
         
         @keyframes float {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(10%, 10%) scale(1.1); }
+            100% { transform: translate(15%, 15%) scale(1.2); }
         }
 
         /* НАВИГАЦИЯ */
@@ -52,17 +51,15 @@
             position: sticky; top: 0; z-index: 100;
             background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
         }
-        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 1px; }
+        .logo { font-weight: 600; font-size: 1.5rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
         .nav-links { display: flex; gap: 30px; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--text-main); }
         
-        /* БАЗОВЫЕ СТИЛИ СЕКЦИЙ */
         section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; }
         .section-tag { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; display: block; }
         .section-title { font-size: 3rem; font-weight: 500; letter-spacing: -1px; margin: 0 0 40px 0; }
         
-        /* ГЛАВНЫЙ ЭКРАН */
         .hero { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 70vh; justify-content: center; }
         .badge { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #aaa; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; }
         .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
@@ -70,54 +67,71 @@
         h1 span { color: #666; }
         .subtitle { color: var(--text-muted); font-size: 1.25rem; max-width: 600px; margin: 24px auto 40px; line-height: 1.6; }
         
-        /* КНОПКИ */
         .btn-group { display: flex; gap: 16px; justify-content: center; }
-        .btn { padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 500; text-decoration: none; transition: 0.2s; }
+        .btn { padding: 14px 32px; border-radius: 8px; font-size: 1rem; font-weight: 500; text-decoration: none; transition: 0.2s; scroll-behavior: smooth; }
         .btn-primary { background: #fff; color: #000; }
         .btn-primary:hover { background: #e0e0e0; }
         .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
         .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
-        /* СЕТКА (КАРТОЧКИ) */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
         .card { background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; backdrop-filter: blur(10px); transition: border-color 0.3s ease, transform 0.3s ease; }
         .card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-5px); }
         .card h3 { font-size: 1.5rem; margin: 0 0 16px 0; font-weight: 500; }
         .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0; }
 
-        /* ПРАЙСИНГ */
-        .pricing-card { background: transparent; border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; text-align: left; position: relative; }
+        /* КАРУСЕЛЬ ДЛЯ ЦЕН */
+        .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+        .carousel-nav { display: flex; gap: 12px; }
+        .nav-btn { background: rgba(255,255,255,0.05); border: 1px solid var(--border-color); color: #fff; border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: 0.3s; font-size: 1.2rem; }
+        .nav-btn:hover { background: #fff; color: #000; }
+        
+        .carousel-container { 
+            display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
+            padding-bottom: 20px;
+            -ms-overflow-style: none; scrollbar-width: none; 
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        
+        .pricing-card { 
+            min-width: 340px; flex: 0 0 auto; scroll-snap-align: start;
+            background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); 
+            border-radius: 16px; padding: 40px; text-align: left; position: relative; 
+            backdrop-filter: blur(10px); transition: border-color 0.3s ease;
+        }
+        .pricing-card:hover { border-color: rgba(255,255,255,0.25); }
         .pricing-card.popular { background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.3); }
+        
         .price { font-size: 3rem; font-weight: 500; margin: 20px 0; }
         .price span { font-size: 1rem; color: var(--text-muted); }
         ul.features { list-style: none; padding: 0; margin: 30px 0; }
         ul.features li { padding: 10px 0; color: var(--text-muted); border-bottom: 1px solid rgba(255,255,255,0.05); }
 
-        /* АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
+        html { scroll-behavior: smooth; }
+
         @media (max-width: 768px) {
             h1 { font-size: 3.5rem; }
-            .nav-links { display: none; } /* Скрываем меню на мобильных пока */
+            .nav-links { display: none; }
             .section-title { font-size: 2.5rem; }
+            .pricing-card { min-width: 85vw; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Фоновая анимация -->
     <div class="bg-animation">
         <div class="glow glow-1"></div>
         <div class="glow glow-2"></div>
     </div>
 
-    <!-- Навигация -->
     <nav>
-        <div class="logo">1NK</div>
+        <a href="index.html" class="logo">1NK</a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#capabilities">Capabilities</a>
@@ -126,9 +140,8 @@
         </div>
     </nav>
 
-    <!-- Главный экран -->
     <section class="hero reveal">
-        <div class="badge"><span>NEW</span> AI & Geospatial Systems</div>
+        <div class="badge"><span>NEW</span> AI Automation Systems</div>
         <h1>Automate your business. <br><span>Scale without limits.</span></h1>
         <p class="subtitle">We replace manual routines with intelligent systems. Save time, reduce human errors, and focus on what truly drives revenue.</p>
         <div class="btn-group">
@@ -136,19 +149,17 @@
         </div>
     </section>
 
-    <!-- О нас (About) -->
     <section id="about" class="reveal">
         <span class="section-tag">About Us</span>
         <h2 class="section-title">Built for the future of business.</h2>
         <div class="grid">
             <div class="card delay-1" style="grid-column: 1 / -1;">
                 <h3>The 1NK Vision</h3>
-                <p>Headquartered in Germany, 1NK pioneers the integration of artificial intelligence and advanced geospatial data. Our mission is to architect automation infrastructures that allow businesses to operate with unprecedented precision and efficiency. We don't just provide software; we build robust engines for your company's growth, reflecting the highest standards of technological engineering.</p>
+                <p>Headquartered in Germany, 1NK pioneers the integration of artificial intelligence and advanced business automation. Our mission is to architect infrastructures that allow businesses to operate with unprecedented precision and efficiency. We don't just provide software; we build robust engines for your company's growth, reflecting the highest standards of technological engineering.</p>
             </div>
         </div>
     </section>
 
-    <!-- Что мы умеем (Capabilities) -->
     <section id="capabilities" class="reveal">
         <span class="section-tag">Capabilities</span>
         <h2 class="section-title">Everything you need to automate.</h2>
@@ -158,8 +169,8 @@
                 <p>Connect all your tools into one seamless ecosystem. We eliminate data silos and manual entry through smart API connections.</p>
             </div>
             <div class="card delay-2">
-                <h3>Geospatial Analytics</h3>
-                <p>Leverage location intelligence. We process complex spatial data to optimize logistics, resource allocation, and market analysis.</p>
+                <h3>Workflow Optimization</h3>
+                <p>Transform manual workflows into fast, automated pipelines. We optimize internal processes from document generation to financial reporting.</p>
             </div>
             <div class="card delay-3">
                 <h3>AI Autonomous Agents</h3>
@@ -168,12 +179,20 @@
         </div>
     </section>
 
-    <!-- Цены (Pricing) -->
     <section id="pricing" class="reveal">
         <span class="section-tag">Pricing</span>
-        <h2 class="section-title">Transparent infrastructure.</h2>
-        <div class="grid">
-            <div class="pricing-card delay-1">
+        
+        <div class="pricing-header">
+            <h2 class="section-title" style="margin-bottom: 0;">Transparent infrastructure.</h2>
+            <div class="carousel-nav">
+                <button class="nav-btn" id="prevBtn">&#8592;</button>
+                <button class="nav-btn" id="nextBtn">&#8594;</button>
+            </div>
+        </div>
+
+        <div class="carousel-container delay-1" id="pricingCarousel">
+            
+            <div class="pricing-card">
                 <h3>Audit & Strategy</h3>
                 <div class="price">€1,500<span>/project</span></div>
                 <p style="color: var(--text-muted);">Deep dive into your current processes.</p>
@@ -184,24 +203,49 @@
                 </ul>
                 <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">Book Audit</a>
             </div>
-            <div class="pricing-card popular delay-2">
-                <h3>System Implementation</h3>
-                <div class="price">Custom<span>/build</span></div>
-                <p style="color: var(--text-muted);">Full-scale AI and workflow deployment.</p>
+
+            <div class="pricing-card popular">
+                <h3>AI Agents & Bots</h3>
+                <div class="price">€3,000<span>/setup</span></div>
+                <p style="color: var(--text-muted);">Intelligent 24/7 communication systems.</p>
                 <ul class="features">
-                    <li>End-to-end integration</li>
-                    <li>Geospatial data setup</li>
-                    <li>Team training & handover</li>
+                    <li>Custom AI training</li>
+                    <li>CRM integration</li>
+                    <li>Lead qualification logic</li>
                 </ul>
-                <a href="#" class="btn btn-primary" style="display: block; text-align: center;">Get a Quote</a>
+                <a href="#" class="btn btn-primary" style="display: block; text-align: center;">Get Started</a>
             </div>
+
+            <div class="pricing-card">
+                <h3>Core Automation</h3>
+                <div class="price">€4,500<span>/project</span></div>
+                <p style="color: var(--text-muted);">Seamless internal tool ecosystem.</p>
+                <ul class="features">
+                    <li>Smart API connections</li>
+                    <li>Data synchronization</li>
+                    <li>Automated reporting pipelines</li>
+                </ul>
+                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">View Details</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Enterprise Infrastructure</h3>
+                <div class="price">Custom</div>
+                <p style="color: var(--text-muted);">Full-scale automation deployment.</p>
+                <ul class="features">
+                    <li>Complex ecosystem integration</li>
+                    <li>Dedicated server setup</li>
+                    <li>Full team training & handover</li>
+                </ul>
+                <a href="#" class="btn btn-secondary" style="display: block; text-align: center;">Get a Quote</a>
+            </div>
+
         </div>
     </section>
 
-    <!-- Скрипт для анимации при скролле -->
     <script>
         function reveal() {
-            var reveals = document.querySelectorAll(".reveal, .card, .pricing-card");
+            var reveals = document.querySelectorAll(".reveal, .card");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
@@ -213,7 +257,22 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Запуск при загрузке
+        reveal();
+
+        const carousel = document.getElementById('pricingCarousel');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+
+        if(nextBtn && prevBtn && carousel) {
+            nextBtn.addEventListener('click', () => {
+                const cardWidth = carousel.querySelector('.pricing-card').offsetWidth;
+                carousel.scrollBy({ left: cardWidth + 24, behavior: 'smooth' });
+            });
+            prevBtn.addEventListener('click', () => {
+                const cardWidth = carousel.querySelector('.pricing-card').offsetWidth;
+                carousel.scrollBy({ left: -(cardWidth + 24), behavior: 'smooth' });
+            });
+        }
     </script>
 </body>
 </html>
