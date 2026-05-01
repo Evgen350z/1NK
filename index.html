@@ -60,7 +60,7 @@
         .btn-secondary { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
         .btn-secondary:hover { border-color: #fff; background: rgba(255,255,255,0.05); }
 
-        /* КАРТОЧКИ УСЛУГ И ЦЕН (БЕЗ ИЗМЕНЕНИЙ) */
+        /* КАРТОЧКИ УСЛУГ И ЦЕН */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
         .card { background: rgba(15, 15, 15, 0.6); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; backdrop-filter: blur(10px); transition: border-color 0.3s ease, transform 0.3s ease; }
         .card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-5px); }
@@ -117,16 +117,15 @@
         <div class="glow glow-2"></div>
     </div>
 
-    <!-- Обновленная навигация -->
+    <!-- Навигация -->
     <nav>
         <a href="index.html" class="logo">1NK</a>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#capabilities">Capabilities</a>
             <a href="#pricing">Pricing</a>
-            <a href="blog.html">Blog</a> <!-- Ссылка на будущий блог -->
+            <a href="blog.html">Blog</a> 
             
-            <!-- Выпадающее меню языка -->
             <div class="lang-dropdown">
                 <button class="lang-btn">EN <span style="font-size: 0.7rem;">▼</span></button>
                 <div class="lang-content">
@@ -137,7 +136,7 @@
         </div>
     </nav>
 
-    <!-- Обновленный главный экран с кнопкой заявки -->
+    <!-- Главный экран -->
     <section class="hero reveal">
         <div class="badge"><span>NEW</span> AI Automation Systems</div>
         <h1>Automate your business. <br><span>Scale without limits.</span></h1>
@@ -148,6 +147,28 @@
         </div>
     </section>
 
+    <!-- БЛОК: PROBLEM -->
+    <section class="reveal">
+        <span class="section-tag">Problem</span>
+        <h2 class="section-title">Most businesses don’t have a scaling problem.</h2>
+        
+        <div class="grid">
+            <div class="card delay-1">
+                <h3>Disconnected Systems</h3>
+                <p>Too many tools that don’t communicate. Data is scattered, duplicated, and unreliable.</p>
+            </div>
+            <div class="card delay-2">
+                <h3>Manual Overload</h3>
+                <p>Your team spends hours on repetitive tasks instead of focusing on growth.</p>
+            </div>
+            <div class="card delay-3">
+                <h3>Automation That Failed</h3>
+                <p>Half-built systems, broken integrations, and solutions that never worked as promised.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: ABOUT -->
     <section id="about" class="reveal">
         <span class="section-tag">About Us</span>
         <h2 class="section-title">Built for the future of business.</h2>
@@ -159,6 +180,7 @@
         </div>
     </section>
 
+    <!-- БЛОК: CAPABILITIES -->
     <section id="capabilities" class="reveal">
         <span class="section-tag">Capabilities</span>
         <h2 class="section-title">Everything you need to automate.</h2>
@@ -178,6 +200,45 @@
         </div>
     </section>
 
+    <!-- БЛОК: PROCESS -->
+    <section class="reveal">
+        <span class="section-tag">Process</span>
+        <h2 class="section-title">How we build systems that scale.</h2>
+
+        <div class="grid">
+            <div class="card delay-1">
+                <h3>01 — Audit & Strategy</h3>
+                <p>We analyze your current workflows, identify inefficiencies, and define a clear automation roadmap.</p>
+            </div>
+            <div class="card delay-2">
+                <h3>02 — System Architecture</h3>
+                <p>We design a structured, scalable system tailored to your business operations.</p>
+            </div>
+            <div class="card delay-3">
+                <h3>03 — Implementation</h3>
+                <p>We build and integrate automation across your entire ecosystem.</p>
+            </div>
+            <div class="card delay-1">
+                <h3>04 — Optimization</h3>
+                <p>We refine, scale, and ensure your systems perform under real business pressure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: COMPLEX SYSTEMS -->
+    <section class="reveal">
+        <span class="section-tag">Complex Systems</span>
+        <h2 class="section-title">We take over where others failed.</h2>
+
+        <div class="grid">
+            <div class="card delay-1" style="grid-column: 1 / -1;">
+                <h3>High-friction projects. Broken systems. Abandoned automation.</h3>
+                <p>Most of our clients come to us after failed attempts to automate their business. We step into complex, unstable environments — and turn them into systems that simply work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: PRICING -->
     <section id="pricing" class="reveal">
         <span class="section-tag">Pricing</span>
         
@@ -240,13 +301,102 @@
         </div>
     </section>
 
+    <!-- БЛОК: FIT -->
+    <section class="reveal">
+        <span class="section-tag">Fit</span>
+        <h2 class="section-title">Who this is for.</h2>
+
+        <div class="grid">
+            <div class="card delay-1">
+                <h3>Scaling Companies</h3>
+                <p>Businesses that need structure to handle growth without chaos.</p>
+            </div>
+            <div class="card delay-2">
+                <h3>Operationally Complex Teams</h3>
+                <p>Companies with multiple tools, workflows, and dependencies.</p>
+            </div>
+            <div class="card delay-3">
+                <h3>Founders Who Value Time</h3>
+                <p>Leaders who want systems — not more manual work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: NOT FOR EVERYONE -->
+    <section class="reveal">
+        <span class="section-tag">Not for everyone</span>
+        <h2 class="section-title">Who this is NOT for.</h2>
+
+        <div class="grid">
+            <div class="card delay-1">
+                <h3>Early-stage experiments</h3>
+                <p>If you’re still validating ideas, automation is not your priority yet.</p>
+            </div>
+            <div class="card delay-2">
+                <h3>Cheap quick fixes</h3>
+                <p>We don’t build temporary solutions or low-cost hacks.</p>
+            </div>
+            <div class="card delay-3">
+                <h3>Manual-first businesses</h3>
+                <p>If you rely on people instead of systems — we’re not the right fit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: FAQ -->
+    <section class="reveal">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Questions, answered.</h2>
+
+        <div class="grid">
+            <div class="card delay-1">
+                <h3>How long does it take?</h3>
+                <p>Most systems are delivered within 2–6 weeks depending on complexity.</p>
+            </div>
+            <div class="card delay-2">
+                <h3>Do I need technical knowledge?</h3>
+                <p>No. We handle the entire process — from architecture to deployment.</p>
+            </div>
+            <div class="card delay-3">
+                <h3>What if my system is complex?</h3>
+                <p>That’s exactly where we operate best.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: FINAL STEP -->
+    <section class="reveal">
+        <span class="section-tag">Final Step</span>
+        <h2 class="section-title">Your business is only as fast as your systems.</h2>
+
+        <div class="grid">
+            <div class="card delay-1" style="grid-column: 1 / -1; text-align: center;">
+                <h3>Fix the bottleneck.</h3>
+                <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-muted); line-height: 1.6;">
+                    If your operations feel slower than they should — it's not your team.  
+                    It's the system behind it.  
+                    We design infrastructures that remove friction and allow your business to scale without limits.
+                </p>
+
+                <div class="btn-group">
+                    <button onclick="openModal()" class="btn btn-primary">Book a Strategy Call</button>
+                    <a href="#pricing" class="btn btn-secondary">View Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ФУТЕР -->
+    <footer style="border-top: 1px solid var(--border-color); padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+        © 2026 1NK. Intelligent Business Automation.
+    </footer>
+
     <!-- МОДАЛЬНОЕ ОКНО ФОРМЫ (Скрыто по умолчанию) -->
     <div id="leadModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
             <h3 class="modal-title">Request an Audit</h3>
             
-            <!-- Форма для n8n. Замените YOUR_N8N_WEBHOOK_URL на вашу ссылку -->
             <form action="YOUR_N8N_WEBHOOK_URL" method="POST">
                 <div class="form-group">
                     <label>Your Name</label>
@@ -266,7 +416,7 @@
         </div>
     </div>
 
-    <!-- Скрипты (Скролл, Карусель, Модальное окно) -->
+    <!-- Скрипты -->
     <script>
         // Анимация при скролле
         function reveal() {
@@ -293,7 +443,6 @@
         const modal = document.getElementById('leadModal');
         function openModal() { modal.classList.add('show'); }
         function closeModal() { modal.classList.remove('show'); }
-        // Закрытие при клике мимо окна
         window.addEventListener('click', (e) => { if (e.target === modal) { closeModal(); } });
     </script>
 </body>
