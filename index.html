@@ -27,7 +27,7 @@
         .hero-glow { position: absolute; width: 80vw; height: 80vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -2; pointer-events: none; }
 
         /* НАВИГАЦИЯ */
-        nav { display: flex; justify-content: space-between; padding: 24px 40px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        nav { display: flex; justify-content: space-between; padding: 20px 40px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .logo { font-weight: 500; font-size: 1.4rem; letter-spacing: 1px; color: #fff; text-decoration: none; }
         .nav-links { display: flex; gap: 32px; align-items: center; }
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.3s; }
@@ -53,21 +53,43 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* СЕКЦИИ */
-        section { padding: 120px 20px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-        .section-tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; text-align: center; }
-        .section-title { font-size: 3rem; font-weight: 400; letter-spacing: -1px; margin: 0 0 60px 0; line-height: 1.2; text-align: center; color: #fff; }
+        /* СЕКЦИИ (ОТСТУПЫ СОКРАЩЕНЫ) */
+        section { padding: 70px 20px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+        .section-tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; text-align: center; }
+        .section-title { font-size: 2.5rem; font-weight: 400; letter-spacing: -1px; margin: 0 0 40px 0; line-height: 1.2; text-align: center; color: #fff; }
         
         /* HERO */
-        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 85vh; justify-content: center; padding-top: 80px; padding-bottom: 60px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 85vh; justify-content: center; padding-top: 60px; padding-bottom: 120px; overflow: hidden; border-bottom: 1px solid transparent; }
         .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
         
+        /* ЭФФЕКТ ПЛАНЕТЫ (ГОРИЗОНТ) ВНИЗУ HERO */
+        .planet-horizon {
+            position: absolute;
+            bottom: -60vh; /* Смещаем вниз, чтобы видна была только верхушка дуги */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160vw;
+            height: 80vh;
+            border-radius: 50%;
+            background: #030303;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 -30px 100px rgba(255, 255, 255, 0.08), inset 0 20px 50px rgba(255, 255, 255, 0.02);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .badge { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #bbb; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(5px); }
         .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
         
-        h1 { font-size: 5.5rem; font-weight: 400; letter-spacing: -2px; margin: 0; line-height: 1.05; max-width: 900px; color: #fff; }
+        /* ШРИФТ В 2 СТРОКИ */
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: -2px; margin: 0; line-height: 1.1; color: #fff; width: 100%; }
         h1 span { color: #777; }
-        .subtitle { color: #aaa; font-size: 1.25rem; max-width: 650px; margin: 30px auto 40px; line-height: 1.6; font-weight: 300; }
+        
+        @media (min-width: 769px) {
+            h1 { white-space: nowrap; /* Принудительно держим в одну линию на десктопе */ }
+        }
+
+        .subtitle { color: #aaa; font-size: 1.2rem; max-width: 650px; margin: 30px auto 40px; line-height: 1.6; font-weight: 300; }
         
         /* КНОПКИ */
         .btn-group { display: flex; gap: 16px; justify-content: center; }
@@ -78,7 +100,7 @@
         .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
         /* ИНФОГРАФИКА */
-        .features-line-container { display: flex; justify-content: space-between; position: relative; padding: 20px 0; gap: 40px; max-width: 900px; margin: 0 auto; }
+        .features-line-container { display: flex; justify-content: space-between; position: relative; padding: 10px 0; gap: 40px; max-width: 900px; margin: 0 auto; }
         .features-line-container::before { content: ''; position: absolute; top: 40px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15) 20%, rgba(255,255,255,0.15) 80%, transparent); z-index: 0; }
         
         .feature-line-item { flex: 1; text-align: center; position: relative; z-index: 1; }
@@ -106,14 +128,14 @@
         .comp-card.good li { color: #ccc; }
 
         /* КАРУСЕЛЬ ЦЕН */
-        .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+        .pricing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; flex-wrap: wrap; gap: 20px; }
         .carousel-nav { display: flex; gap: 12px; }
         .nav-btn { background: transparent; border: 1px solid var(--border-color); color: #fff; border-radius: 50%; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; font-size: 1.2rem; }
         .nav-btn:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.05); }
         
         .carousel-container { 
             display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; 
-            padding: 20px 0 40px 0; scroll-behavior: smooth; 
+            padding: 10px 0 30px 0; scroll-behavior: smooth; 
             -ms-overflow-style: none; scrollbar-width: none; align-items: stretch;
         }
         .carousel-container::-webkit-scrollbar { display: none; }
@@ -121,7 +143,7 @@
         .pricing-card { 
             min-width: 340px; flex: 0 0 auto; scroll-snap-align: center; 
             background: #060606; border: 1px solid var(--border-color); 
-            border-radius: 16px; padding: 48px 40px; text-align: left; 
+            border-radius: 16px; padding: 40px 30px; text-align: left; 
             position: relative; 
             transition: all 0.4s ease; display: flex; flex-direction: column;
         }
@@ -143,32 +165,32 @@
         .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 4px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
         .pricing-meta { font-size: 0.85rem; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
-        .target-aud { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border-color); font-weight: 300; }
+        .target-aud { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); font-weight: 300; }
         .price-setup { font-size: 1rem; color: #888; margin-bottom: 4px; }
-        .price-retainer { font-size: 2.5rem; font-weight: 400; margin: 0 0 24px 0; letter-spacing: -1px; color: #fff; }
+        .price-retainer { font-size: 2.5rem; font-weight: 400; margin: 0 0 20px 0; letter-spacing: -1px; color: #fff; }
         .price-retainer span { font-size: 1rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0; }
-        ul.features { list-style: none; padding: 0; margin: 20px 0 40px 0; flex-grow: 1; }
-        ul.features li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; font-size: 0.95rem; color: #ccc; font-weight: 300; }
+        ul.features { list-style: none; padding: 0; margin: 15px 0 30px 0; flex-grow: 1; }
+        ul.features li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; font-size: 0.95rem; color: #ccc; font-weight: 300; }
         ul.features svg { flex-shrink: 0; width: 18px; height: 18px; color: #fff; opacity: 0.3; margin-top: 3px; }
 
-        /* ОТЗЫВЫ В СТИЛЕ КАРТОЧКИ С КНОПКАМИ ВНУТРИ */
-        .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 20px; }
+        /* ОТЗЫВЫ В СТИЛЕ КАРТОЧКИ */
+        .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
         .testi-card { 
             background: rgba(255,255,255,0.02); 
             border: 1px solid rgba(255,255,255,0.08); 
             border-radius: 24px; 
-            padding: 70px 90px; 
+            padding: 60px 80px; 
             max-width: 900px; 
             width: 100%; 
             text-align: center; 
             position: relative;
         }
         
-        .quote-icon { margin-bottom: 24px; display: flex; justify-content: center; }
+        .quote-icon { margin-bottom: 20px; display: flex; justify-content: center; }
         .quote-icon svg { width: 36px; height: 36px; opacity: 0.8; }
         
         .testi-text { 
-            font-size: 1.4rem; font-weight: 400; line-height: 1.6; margin-bottom: 40px; 
+            font-size: 1.4rem; font-weight: 400; line-height: 1.6; margin-bottom: 30px; 
             min-height: 100px; color: #fff;
             display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; 
         }
@@ -200,14 +222,14 @@
         /* FAQ АККОРДЕОН */
         .faq-container { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--border-color); }
         .faq-item { border-bottom: 1px solid var(--border-color); overflow: hidden; }
-        .faq-question { width: 100%; text-align: left; padding: 24px 0; background: transparent; border: none; color: #fff; font-size: 1.1rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
+        .faq-question { width: 100%; text-align: left; padding: 20px 0; background: transparent; border: none; color: #fff; font-size: 1.1rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
         .faq-icon { font-size: 1.5rem; color: #555; transition: transform 0.3s ease; font-weight: 300; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
         .faq-answer { max-height: 0; transition: max-height 0.4s ease; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 300; }
-        .faq-item.active .faq-answer { padding-bottom: 24px; }
+        .faq-item.active .faq-answer { padding-bottom: 20px; }
 
-        /* ФУТЕР (ПОЛНОЦЕННЫЙ С ИКОНКАМИ) */
-        .footer { border-top: 1px solid var(--border-color); padding: 60px 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); margin-top: 60px; }
+        /* ФУТЕР (С ИКОНКАМИ) */
+        .footer { border-top: 1px solid var(--border-color); padding: 50px 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); margin-top: 20px; }
         .footer-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
         .footer-left .logo { font-size: 1.5rem; margin-bottom: 8px; display: inline-block; color: #fff; }
         .footer-left p { color: #666; font-size: 0.85rem; margin: 0; }
@@ -240,8 +262,9 @@
         .scroll-delay-2 { transition-delay: 0.2s; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
+            h1 { font-size: 3.5rem; white-space: normal; } /* На мобильных разрешаем перенос, так как не влезет */
             .nav-links { display: none; }
+            section { padding: 60px 20px; }
             .features-line-container { flex-direction: column; gap: 40px; }
             .features-line-container::before { display: none; }
             .comparison-grid { grid-template-columns: 1fr; }
@@ -281,13 +304,17 @@
         </div>
     </nav>
 
-    <!-- 1. HERO -->
+    <!-- 1. HERO (С ЭФФЕКТОМ ПЛАНЕТЫ) -->
     <section class="hero">
         <div class="hero-glow"></div>
+        <div class="planet-horizon"></div> <!-- Эффект планеты -->
 
         <div class="hero-content">
             <div class="badge load-animate delay-100"><span>1NK</span> Intelligent Systems</div>
+            
+            <!-- Заголовок в 2 строки -->
             <h1 class="load-animate delay-200">Your business is not slow.<br><span>Your systems are.</span></h1>
+            
             <p class="subtitle load-animate delay-300">We build invisible infrastructures that capture every lead, eliminate manual routines, and structurally recover lost profit.</p>
             <div class="btn-group load-animate delay-400">
                 <button onclick="openModal()" class="btn btn-primary">Book a Strategy Call</button>
@@ -372,7 +399,7 @@
     <!-- 5. ОТЗЫВЫ В СТИЛЕ КАРТОЧКИ -->
     <section id="reviews" class="reveal">
         <h2 class="section-title scroll-delay-1" style="margin-bottom: 16px;">Don't take our word for it</h2>
-        <p class="subtitle scroll-delay-2" style="text-align: center; margin: 0 auto 50px;">See what our clients have to say about our intelligent revenue systems.</p>
+        <p class="subtitle scroll-delay-2" style="text-align: center; margin: 0 auto 30px;">See what our clients have to say about our intelligent revenue systems.</p>
         
         <div class="testimonials-wrapper scroll-delay-2">
             <div class="testi-card">
@@ -401,7 +428,7 @@
         </div>
     </section>
 
-    <!-- 6. ПОЛНЫЕ ЦЕНЫ (ВЕРНУЛ ВСЕ 4 КАРТОЧКИ) -->
+    <!-- 6. ПОЛНЫЕ ЦЕНЫ (ВСЕ 4 ТАРИФА НА МЕСТЕ) -->
     <section id="pricing" class="reveal">
         <span class="section-tag scroll-delay-1">Investment</span>
         <div class="pricing-header scroll-delay-2">
@@ -496,7 +523,7 @@
         </div>
     </section>
 
-    <!-- 8. ПОЛНЫЙ FAQ (ВЕРНУЛ ВСЕ 10 ВОПРОСОВ) -->
+    <!-- 8. ПОЛНЫЙ FAQ (ВСЕ 10 ВОПРОСОВ НА МЕСТЕ) -->
     <section id="faq" class="reveal">
         <span class="section-tag scroll-delay-1">Clarity</span>
         <h2 class="section-title scroll-delay-2">FAQ</h2>
@@ -547,7 +574,7 @@
 
     <!-- 9. FINAL CTA -->
     <section class="reveal">
-        <div class="grid scroll-delay-1" style="margin-bottom: 60px;">
+        <div class="grid scroll-delay-1" style="margin-bottom: 30px;">
             <div class="card" style="grid-column: 1 / -1; text-align: center; background: transparent;">
                 <h3>Fix the bottleneck.</h3>
                 <p style="max-width: 600px; margin: 0 auto 30px;">Your operations shouldn't be slower than your ambition. We design infrastructures that remove friction and allow your business to scale without limits.</p>
@@ -556,7 +583,7 @@
         </div>
     </section>
 
-    <!-- 10. ФУТЕР (ВЕРНУЛ ИКОНКИ СОЦСЕТЕЙ) -->
+    <!-- 10. ФУТЕР (СО ВСЕМИ ИКОНКАМИ) -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
@@ -582,7 +609,7 @@
         </div>
     </footer>
 
-    <!-- 11. МОДАЛЬНОЕ ОКНО С ФОРМОЙ -->
+    <!-- 11. МОДАЛЬНОЕ ОКНО -->
     <div id="leadModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
@@ -608,7 +635,7 @@
 
     <!-- СКРИПТЫ -->
     <script>
-        // АНИМАЦИЯ ЗВЕЗД (ВАУ-ЭФФЕКТ КАК НА WAITLISTER)
+        // АНИМАЦИЯ ЗВЕЗД
         const canvas = document.getElementById('starCanvas');
         const ctx = canvas.getContext('2d');
         let width, height, stars = [];
@@ -633,14 +660,14 @@
             ctx.clearRect(0, 0, width, height);
             stars.forEach(s => {
                 s.x += s.dx;
-                s.y -= Math.abs(s.dy); // Медленно плывут вверх
+                s.y -= Math.abs(s.dy); 
                 
                 if (s.x < 0) s.x = width; 
                 if (s.x > width) s.x = 0;
                 if (s.y < 0) s.y = height; 
                 if (s.y > height) s.y = 0;
                 
-                s.alpha += (Math.random() - 0.5) * 0.05; // Мерцание
+                s.alpha += (Math.random() - 0.5) * 0.05; 
                 if(s.alpha < 0.1) s.alpha = 0.1;
                 if(s.alpha > 0.8) s.alpha = 0.8;
 
