@@ -20,7 +20,7 @@
         }
 
         /* 1. ГЛОБАЛЬНЫЙ ШУМ */
-        .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
+        .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
 
         /* НАВИГАЦИЯ */
         nav { display: flex; justify-content: space-between; padding: 24px 40px; align-items: center; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 100; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -42,33 +42,35 @@
         .section-tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; display: block; text-align: center; }
         .section-title { font-size: 3rem; font-weight: 400; letter-spacing: -1px; margin: 0 0 60px 0; line-height: 1.2; text-align: center; color: #fff; }
         
-        /* HERO С ЛОКАЛЬНОЙ АНИМАЦИЕЙ */
-        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 80vh; justify-content: center; padding-top: 100px; padding-bottom: 60px; overflow: hidden; }
-        .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+        /* HERO (АНИМАЦИЯ ТЕПЕРЬ ВИДИМАЯ И ОСТАЕТСЯ ТОЛЬКО ЗДЕСЬ) */
+        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 80vh; justify-content: center; padding-top: 100px; padding-bottom: 60px; overflow: hidden; border-bottom: 1px solid var(--border-color); }
         
-        .bg-animation { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-        .glow { position: absolute; border-radius: 50%; filter: blur(140px); opacity: 0.5; }
-        .glow-1 { width: 50vw; height: 50vw; background: rgba(255, 255, 255, 0.04); top: -10%; left: -10%; animation: drift1 18s infinite alternate ease-in-out; }
-        .glow-2 { width: 60vw; height: 60vw; background: rgba(255, 255, 255, 0.03); bottom: -20%; right: -10%; animation: drift2 22s infinite alternate ease-in-out; }
-        .glow-3 { width: 45vw; height: 45vw; background: rgba(255, 255, 255, 0.02); top: 30%; left: 30%; animation: drift3 20s infinite alternate ease-in-out; }
+        .bg-animation { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
+        .glow { position: absolute; border-radius: 50%; filter: blur(100px); mix-blend-mode: screen; }
+        /* Яркость повышена, добавлен холодный технологичный оттенок */
+        .glow-1 { width: 45vw; height: 45vw; background: rgba(255, 255, 255, 0.12); top: -15%; left: -10%; animation: drift1 12s infinite alternate ease-in-out; }
+        .glow-2 { width: 55vw; height: 55vw; background: rgba(200, 220, 255, 0.08); bottom: -20%; right: -15%; animation: drift2 16s infinite alternate ease-in-out; }
+        .glow-3 { width: 40vw; height: 40vw; background: rgba(255, 255, 255, 0.09); top: 30%; left: 30%; animation: drift3 14s infinite alternate ease-in-out; }
         
-        @keyframes drift1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(10%, 10%) scale(1.1); } }
-        @keyframes drift2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, -10%) scale(1.1); } }
-        @keyframes drift3 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, 10%) scale(1.1); } }
+        @keyframes drift1 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(12%, 12%) scale(1.1); } }
+        @keyframes drift2 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-10%, -15%) scale(1.15); } }
+        @keyframes drift3 { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(-15%, 10%) scale(1.1); } }
 
-        .badge { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #888; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; }
-        .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 500; font-size: 0.75rem; }
+        .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+        
+        .badge { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.15); padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; color: #aaa; margin-bottom: 30px; display: inline-flex; align-items: center; gap: 10px; backdrop-filter: blur(10px); }
+        .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
         h1 { font-size: 5rem; font-weight: 400; letter-spacing: -1.5px; margin: 0; line-height: 1.1; max-width: 900px; color: #fff; }
         h1 span { color: #888; }
-        .subtitle { color: var(--text-muted); font-size: 1.2rem; max-width: 650px; margin: 30px auto 40px; line-height: 1.6; font-weight: 300; }
+        .subtitle { color: #aaa; font-size: 1.2rem; max-width: 650px; margin: 30px auto 40px; line-height: 1.6; font-weight: 300; }
         
         /* КНОПКИ */
         .btn-group { display: flex; gap: 16px; justify-content: center; }
         .btn { padding: 16px 36px; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
         .btn-primary { background: #fff; color: #000; }
-        .btn-primary:hover { background: #e0e0e0; transform: translateY(-2px); }
-        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border-color); }
-        .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+        .btn-primary:hover { background: #e0e0e0; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
+        .btn-secondary { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(5px); }
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
         /* ИНФОГРАФИКА */
         .features-line-container { display: flex; justify-content: space-between; position: relative; padding: 20px 0; gap: 40px; max-width: 900px; margin: 0 auto; }
@@ -131,7 +133,7 @@
         .pricing-card > * { position: relative; z-index: 1; }
         
         /* Выделенный тариф */
-        .pricing-card.popular { border: 1px solid rgba(255,255,255,0.3); background: #0a0a0a; transform: scale(1.02); }
+        .pricing-card.popular { border: 1px solid rgba(255,255,255,0.4); background: #0a0a0a; transform: scale(1.02); }
         .pricing-card.popular:hover { border-color: #fff; transform: scale(1.04) translateY(-5px); }
         .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 4px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
 
@@ -247,7 +249,6 @@
             .pricing-card { min-width: 85vw; transform: scale(1); }
             .pricing-card.popular { transform: scale(1); }
             
-            /* Адаптация карточки отзывов под мобильные */
             .testi-card { padding: 40px 20px 80px 20px; }
             .testi-text { font-size: 1.2rem; }
             .nav-btn-testi { top: auto; bottom: 20px; transform: none; }
@@ -260,7 +261,7 @@
 </head>
 <body>
 
-    <!-- ГЛОБАЛЬНЫЙ ШУМ (остается на всем сайте) -->
+    <!-- ГЛОБАЛЬНЫЙ ШУМ (остается на всем сайте для текстуры) -->
     <div class="noise"></div>
 
     <!-- НАВИГАЦИЯ -->
@@ -283,9 +284,8 @@
         </div>
     </nav>
 
-    <!-- 1. HERO (Анимация сфер заперта только здесь) -->
+    <!-- 1. HERO (ВИДИМАЯ И ОЖИВШАЯ АНИМАЦИЯ ТОЛЬКО ЗДЕСЬ) -->
     <section class="hero reveal">
-        <!-- Фон со сферами внутри секции -->
         <div class="bg-animation">
             <div class="glow glow-1"></div>
             <div class="glow glow-2"></div>
@@ -293,6 +293,7 @@
         </div>
 
         <div class="hero-content">
+            <div class="badge reveal delay-1"><span>1NK</span> Intelligent Systems</div>
             <h1 class="reveal delay-1">Your business is not slow.<br><span>Your systems are.</span></h1>
             <p class="subtitle reveal delay-2">We build invisible infrastructures that capture every lead, eliminate manual routines, and structurally recover lost profit.</p>
             <div class="btn-group reveal delay-3">
