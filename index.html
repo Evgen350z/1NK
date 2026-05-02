@@ -22,9 +22,6 @@
         /* 1. ГЛОБАЛЬНЫЙ ШУМ И ЗВЕЗДНОЕ НЕБО */
         .noise { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; opacity: 0.04; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"); }
         #starCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -3; background: #030303; pointer-events: none; }
-        
-        /* ЦЕНТРАЛЬНОЕ СВЕЧЕНИЕ HERO */
-        .hero-glow { position: absolute; width: 80vw; height: 80vw; max-width: 800px; max-height: 800px; background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 60%); top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -2; pointer-events: none; }
 
         /* НАВИГАЦИЯ */
         nav { display: flex; justify-content: space-between; padding: 20px 40px; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100; background: rgba(3, 3, 3, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -53,7 +50,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* СЕКЦИИ (ОТСТУПЫ СОКРАЩЕНЫ) */
+        /* СЕКЦИИ */
         section { padding: 70px 20px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
         .section-tag { color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; display: block; text-align: center; }
         .section-title { font-size: 2.5rem; font-weight: 400; letter-spacing: -1px; margin: 0 0 40px 0; line-height: 1.2; text-align: center; color: #fff; }
@@ -62,18 +59,21 @@
         .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 85vh; justify-content: center; padding-top: 60px; padding-bottom: 120px; overflow: hidden; border-bottom: 1px solid transparent; }
         .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
         
-        /* ЭФФЕКТ ПЛАНЕТЫ (ГОРИЗОНТ) ВНИЗУ HERO */
+        /* ЭФФЕКТ ПЛАНЕТЫ (Цветное свечение без краев) */
         .planet-horizon {
             position: absolute;
-            bottom: -60vh; /* Смещаем вниз, чтобы видна была только верхушка дуги */
+            bottom: -85vh; /* Опускаем глубоко вниз */
             left: 50%;
             transform: translateX(-50%);
-            width: 160vw;
-            height: 80vh;
+            width: 300vw; /* 3 экрана в ширину = никаких краев */
+            height: 100vh;
             border-radius: 50%;
-            background: #030303;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 -30px 100px rgba(255, 255, 255, 0.08), inset 0 20px 50px rgba(255, 255, 255, 0.02);
+            background: #02040a; /* Легкий синеватый оттенок самой планеты */
+            border-top: 1px solid rgba(130, 180, 255, 0.4);
+            box-shadow:
+                0 -60px 200px rgba(20, 60, 200, 0.25),   /* Огромное глубокое синее свечение */
+                0 -15px 50px rgba(100, 150, 255, 0.35),  /* Яркая голубая кромка атмосферы */
+                inset 0 30px 60px rgba(0, 0, 0, 0.9);    /* Тень внутри планеты */
             z-index: 1;
             pointer-events: none;
         }
@@ -82,22 +82,21 @@
         .badge span { background: #fff; color: #000; padding: 2px 8px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
         
         /* ШРИФТ В 2 СТРОКИ */
-        h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: -2px; margin: 0; line-height: 1.1; color: #fff; width: 100%; }
+        h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 400; letter-spacing: -2px; margin: 0; line-height: 1.1; color: #fff; width: 100%; max-width: 900px; }
         h1 span { color: #777; }
-        
-        @media (min-width: 769px) {
-            h1 { white-space: nowrap; /* Принудительно держим в одну линию на десктопе */ }
-        }
+        @media (min-width: 769px) { h1 { white-space: nowrap; } } /* Запрет переноса на десктопе */
 
         .subtitle { color: #aaa; font-size: 1.2rem; max-width: 650px; margin: 30px auto 40px; line-height: 1.6; font-weight: 300; }
         
-        /* КНОПКИ */
+        /* КНОПКИ И МАРКЕТИНГОВЫЙ БЛОК */
         .btn-group { display: flex; gap: 16px; justify-content: center; }
         .btn { padding: 16px 36px; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s ease; font-family: inherit; }
         .btn-primary { background: #fff; color: #000; }
         .btn-primary:hover { background: #e0e0e0; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(255,255,255,0.1); }
         .btn-secondary { background: rgba(255,255,255,0.03); color: #fff; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(5px); }
         .btn-secondary:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+        
+        .trust-micro { margin-top: 16px; font-size: 0.85rem; color: #777; font-weight: 300; letter-spacing: 0.5px; }
 
         /* ИНФОГРАФИКА */
         .features-line-container { display: flex; justify-content: space-between; position: relative; padding: 10px 0; gap: 40px; max-width: 900px; margin: 0 auto; }
@@ -105,7 +104,7 @@
         
         .feature-line-item { flex: 1; text-align: center; position: relative; z-index: 1; }
         .feature-icon { width: 80px; height: 80px; margin: 0 auto 24px; background: #070707; border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: inset 0 10px 20px rgba(255,255,255,0.02); color: #fff; transition: transform 0.3s; }
-        .feature-line-item:hover .feature-icon { transform: translateY(-5px); border-color: rgba(255,255,255,0.4); }
+        .feature-line-item:hover .feature-icon { transform: translateY(-5px); border-color: rgba(130, 180, 255, 0.4); } /* Подсветка в тон планете */
         .feature-icon svg { width: 28px; height: 28px; stroke-width: 1.2; opacity: 0.9; }
         .feature-line-item h3 { font-size: 1.2rem; font-weight: 500; margin: 0 0 12px 0; color: #fff; }
         .feature-line-item p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin: 0; font-weight: 300; }
@@ -117,7 +116,7 @@
         .card h3 { font-size: 1.3rem; margin: 0 0 16px 0; font-weight: 500; color: #fff; }
         .card p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin: 0; font-weight: 300; }
 
-        /* СРАВНЕНИЕ (Строгий монохром) */
+        /* СРАВНЕНИЕ */
         .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .comp-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; }
         .comp-card h4 { margin: 0 0 24px 0; font-size: 1.2rem; font-weight: 500; color: #fff; }
@@ -228,7 +227,7 @@
         .faq-answer { max-height: 0; transition: max-height 0.4s ease; color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; font-weight: 300; }
         .faq-item.active .faq-answer { padding-bottom: 20px; }
 
-        /* ФУТЕР (С ИКОНКАМИ) */
+        /* ФУТЕР */
         .footer { border-top: 1px solid var(--border-color); padding: 50px 40px; background: rgba(0,0,0,0.5); backdrop-filter: blur(10px); margin-top: 20px; }
         .footer-content { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px; }
         .footer-left .logo { font-size: 1.5rem; margin-bottom: 8px; display: inline-block; color: #fff; }
@@ -262,7 +261,7 @@
         .scroll-delay-2 { transition-delay: 0.2s; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 3.5rem; white-space: normal; } /* На мобильных разрешаем перенос, так как не влезет */
+            h1 { font-size: 3.5rem; white-space: normal; } 
             .nav-links { display: none; }
             section { padding: 60px 20px; }
             .features-line-container { flex-direction: column; gap: 40px; }
@@ -300,30 +299,30 @@
                     <a href="de.html">Deutsch</a>
                 </div>
             </div>
-            <button onclick="openModal()" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.8rem; margin-left: 10px;">Book Audit</button>
+            <button onclick="openModal()" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.8rem; margin-left: 10px;">Claim Audit</button>
         </div>
     </nav>
 
-    <!-- 1. HERO (С ЭФФЕКТОМ ПЛАНЕТЫ) -->
+    <!-- 1. HERO (С ЦВЕТНЫМ ЭФФЕКТОМ ПЛАНЕТЫ БЕЗ КРАЕВ) -->
     <section class="hero">
-        <div class="hero-glow"></div>
-        <div class="planet-horizon"></div> <!-- Эффект планеты -->
+        <div class="planet-horizon"></div>
 
         <div class="hero-content">
-            <div class="badge load-animate delay-100"><span>1NK</span> Intelligent Systems</div>
+            <div class="badge load-animate delay-100"><span>1NK</span> AI Revenue Infrastructure</div>
             
-            <!-- Заголовок в 2 строки -->
             <h1 class="load-animate delay-200">Your business is not slow.<br><span>Your systems are.</span></h1>
             
-            <p class="subtitle load-animate delay-300">We build invisible infrastructures that capture every lead, eliminate manual routines, and structurally recover lost profit.</p>
+            <p class="subtitle load-animate delay-300">Stop losing revenue to manual work. We engineer AI-driven systems that qualify leads instantly, automate your operations, and scale your profit.</p>
+            
             <div class="btn-group load-animate delay-400">
-                <button onclick="openModal()" class="btn btn-primary">Book a Strategy Call</button>
-                <a href="#outcomes" class="btn btn-secondary">See outcomes</a>
+                <button onclick="openModal()" class="btn btn-primary">Claim Free Systems Audit</button>
+                <a href="#outcomes" class="btn btn-secondary">See Outcomes</a>
             </div>
+            <div class="trust-micro load-animate delay-400">No technical skills required • Free 30-min consultation</div>
         </div>
     </section>
 
-    <!-- 2. ИНФОГРАФИКА КАК НА ФОТО -->
+    <!-- 2. ИНФОГРАФИКА -->
     <section id="outcomes" class="reveal">
         <div class="features-line-container scroll-delay-1">
             <div class="feature-line-item">
@@ -396,7 +395,7 @@
         </div>
     </section>
 
-    <!-- 5. ОТЗЫВЫ В СТИЛЕ КАРТОЧКИ -->
+    <!-- 5. ОТЗЫВЫ -->
     <section id="reviews" class="reveal">
         <h2 class="section-title scroll-delay-1" style="margin-bottom: 16px;">Don't take our word for it</h2>
         <p class="subtitle scroll-delay-2" style="text-align: center; margin: 0 auto 30px;">See what our clients have to say about our intelligent revenue systems.</p>
@@ -428,7 +427,7 @@
         </div>
     </section>
 
-    <!-- 6. ПОЛНЫЕ ЦЕНЫ (ВСЕ 4 ТАРИФА НА МЕСТЕ) -->
+    <!-- 6. ПОЛНЫЕ ЦЕНЫ (4 КАРТОЧКИ) -->
     <section id="pricing" class="reveal">
         <span class="section-tag scroll-delay-1">Investment</span>
         <div class="pricing-header scroll-delay-2">
@@ -523,7 +522,7 @@
         </div>
     </section>
 
-    <!-- 8. ПОЛНЫЙ FAQ (ВСЕ 10 ВОПРОСОВ НА МЕСТЕ) -->
+    <!-- 8. ПОЛНЫЙ FAQ (10 ВОПРОСОВ) -->
     <section id="faq" class="reveal">
         <span class="section-tag scroll-delay-1">Clarity</span>
         <h2 class="section-title scroll-delay-2">FAQ</h2>
@@ -578,12 +577,12 @@
             <div class="card" style="grid-column: 1 / -1; text-align: center; background: transparent;">
                 <h3>Fix the bottleneck.</h3>
                 <p style="max-width: 600px; margin: 0 auto 30px;">Your operations shouldn't be slower than your ambition. We design infrastructures that remove friction and allow your business to scale without limits.</p>
-                <button onclick="openModal()" class="btn btn-primary">Book a Strategy Call</button>
+                <button onclick="openModal()" class="btn btn-primary">Claim Free Systems Audit</button>
             </div>
         </div>
     </section>
 
-    <!-- 10. ФУТЕР (СО ВСЕМИ ИКОНКАМИ) -->
+    <!-- 10. ФУТЕР -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
@@ -609,7 +608,7 @@
         </div>
     </footer>
 
-    <!-- 11. МОДАЛЬНОЕ ОКНО -->
+    <!-- 11. МОДАЛЬНОЕ ОКНО С ФОРМОЙ -->
     <div id="leadModal" class="modal">
         <div class="modal-content">
             <button class="close-btn" onclick="closeModal()">&times;</button>
