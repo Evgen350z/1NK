@@ -160,30 +160,43 @@
         .for-list.no li { color: #666; }
         .for-list.no span { color: #f44336; font-size: 1.6rem; font-weight: 600; }
 
-        /* ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН (БЕЗ БАГОВ) */
-        .faq-container { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--border-color); }
-        .faq-item { border-bottom: 1px solid var(--border-color); }
-        .faq-question { width: 100%; text-align: left; padding: 25px 0; background: transparent; border: none; color: #fff; font-size: 1.2rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
-        .faq-question:hover { color: var(--accent-blue); }
-        .faq-icon { font-size: 1.8rem; color: #555; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 300; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
+        /* FAQ В СТИЛЕ CARDS (КАК НА ФОТО) */
+        .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
         
-        .faq-answer { 
-            max-height: 0; 
+        .faq-item { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid rgba(255,255,255,0.08); 
+            border-radius: 16px; 
             overflow: hidden; 
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
-            color: var(--text-muted); 
-            font-size: 1.05rem; 
-            line-height: 1.6; 
-            font-weight: 300; 
-            opacity: 0;
-            padding: 0 10px;
+            transition: all 0.3s ease;
         }
-        /* При добавлении класса active CSS сам раскрывает блок */
+        
+        .faq-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
+        .faq-item.active { border-color: var(--accent-blue); background: rgba(74, 158, 255, 0.02); }
+
+        .faq-question { 
+            width: 100%; text-align: left; padding: 24px 30px; 
+            background: transparent; border: none; color: #fff; 
+            font-size: 1.15rem; font-weight: 500; cursor: pointer; 
+            display: flex; justify-content: space-between; align-items: center; 
+            font-family: inherit; 
+        }
+
+        .faq-icon { 
+            width: 20px; height: 20px; color: #666; 
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+        }
+        .faq-item.active .faq-icon { transform: rotate(180deg); color: #fff; }
+
+        .faq-answer { 
+            max-height: 0; overflow: hidden; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+            color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; 
+            font-weight: 300; opacity: 0; padding: 0 30px;
+        }
+
         .faq-item.active .faq-answer { 
-            max-height: 500px; 
-            opacity: 1;
-            padding: 0 10px 25px 10px;
+            max-height: 300px; opacity: 1; padding-bottom: 30px; 
         }
 
         /* ФИНАЛЬНЫЙ CTA */
@@ -510,50 +523,101 @@
         </div>
     </section>
 
-    <!-- 8. ИСПРАВЛЕННЫЙ FAQ (ОТКРЫВАЕТСЯ ПЛАВНО) -->
+    <!-- 8. ОБНОВЛЕННЫЙ FAQ (КАРТОЧКИ СО ВСЕМИ ВОПРОСАМИ) -->
     <section id="faq">
         <h2 class="section-title reveal">Common Questions</h2>
         <div class="faq-container">
-            <div class="faq-item reveal">
-                <button class="faq-question">Is this just automation? <span class="faq-icon">+</span></button>
+
+            <!-- 1 -->
+            <div class="faq-item reveal delay-1">
+                <button class="faq-question">
+                    Is this just automation?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">No. Automation is just the tool. We focus on one thing — getting you more booked clients from the leads you already have. We design the logic that actually closes deals.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">How fast will I see results? <span class="faq-icon">+</span></button>
+
+            <!-- 2 -->
+            <div class="faq-item reveal delay-2">
+                <button class="faq-question">
+                    How fast will I see results?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Most clients see improvement within the first 1–2 weeks after launch. Once the system starts catching missed messages, the ROI is immediate.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">How long does implementation take? <span class="faq-icon">+</span></button>
+
+            <!-- 3 -->
+            <div class="faq-item reveal delay-3">
+                <button class="faq-question">
+                    How long does implementation take?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Most systems are deployed within 2–6 weeks. We build the architecture, test it under load, and hand over a finished, stable product.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">What kind of results can we expect? <span class="faq-icon">+</span></button>
+
+            <!-- 4 -->
+            <div class="faq-item reveal delay-4">
+                <button class="faq-question">
+                    What kind of results can we expect?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Clients typically see a 20-50% increase in conversion simply by being the first to reply in their market.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">Do I need technical knowledge? <span class="faq-icon">+</span></button>
+
+            <!-- 5 -->
+            <div class="faq-item reveal delay-1">
+                <button class="faq-question">
+                    Do I need technical knowledge?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">No. We handle everything from API logic to AI model training. You only need to focus on handling the new appointments.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">Can you work with our existing tools? <span class="faq-icon">+</span></button>
+
+            <!-- 6 -->
+            <div class="faq-item reveal delay-2">
+                <button class="faq-question">
+                    Can you work with our existing tools?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Yes. We specialize in connecting scattered ecosystems. If your tools have an API, we can bridge them flawlessly.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">What if we already tried bots and they failed? <span class="faq-icon">+</span></button>
+
+            <!-- 7 -->
+            <div class="faq-item reveal delay-3">
+                <button class="faq-question">
+                    What if we already tried bots and they failed?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Simple bots break. We build cognitive logic systems that understand context and intent, creating a natural feel for your clients.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">Will automation replace our team? <span class="faq-icon">+</span></button>
+
+            <!-- 8 -->
+            <div class="faq-item reveal delay-4">
+                <button class="faq-question">
+                    Will automation replace our team?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">No. It removes the routine. Your team stops wasting time on "Are you still interested?" and starts spending time closing high-value deals.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">Is this expensive? <span class="faq-icon">+</span></button>
+
+            <!-- 9 -->
+            <div class="faq-item reveal delay-1">
+                <button class="faq-question">
+                    Is this expensive?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Compared to the cost of manual labor and lost leads, our systems are significantly cheaper. It's an investment in your infrastructure that pays for itself.</div>
             </div>
-            <div class="faq-item reveal">
-                <button class="faq-question">Do you offer ongoing support? <span class="faq-icon">+</span></button>
+
+            <!-- 10 -->
+            <div class="faq-item reveal delay-2">
+                <button class="faq-question">
+                    Do you offer ongoing support?
+                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
                 <div class="faq-answer">Yes. Every retainer includes monitoring and security updates so your systems never stop working.</div>
             </div>
+
         </div>
     </section>
 
@@ -752,16 +816,16 @@
             });
         });
 
-        // ИСПРАВЛЕННЫЙ FAQ (ТЕПЕРЬ РАБОТАЕТ БЕЗ БАГОВ)
+        // ИСПРАВЛЕННЫЙ СКРИПТ FAQ (КАРТОЧКИ)
         document.querySelectorAll('.faq-question').forEach(q => {
             q.onclick = () => {
                 const item = q.parentElement;
                 const isActive = item.classList.contains('active');
                 
-                // Закрываем все открытые вкладки
+                // Закрываем другие, если хочешь (аккордеон)
                 document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
                 
-                // Если кликнули по закрытой, открываем её
+                // Если был закрыт — открываем
                 if(!isActive) {
                     item.classList.add('active');
                 }
