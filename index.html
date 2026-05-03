@@ -160,7 +160,7 @@
         .for-list.no li { color: #666; }
         .for-list.no span { color: #f44336; font-size: 1.6rem; font-weight: 600; }
 
-        /* FAQ В СТИЛЕ CARDS (КАК НА ФОТО) */
+        /* FAQ В СТИЛЕ CARDS (ИСПРАВЛЕННЫЙ КОНФЛИКТ КЛАССОВ) */
         .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
         
         .faq-item { 
@@ -172,7 +172,7 @@
         }
         
         .faq-item:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); }
-        .faq-item.active { border-color: var(--accent-blue); background: rgba(74, 158, 255, 0.02); }
+        .faq-item.open { border-color: var(--accent-blue); background: rgba(74, 158, 255, 0.02); }
 
         .faq-question { 
             width: 100%; text-align: left; padding: 24px 30px; 
@@ -186,7 +186,7 @@
             width: 20px; height: 20px; color: #666; 
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
         }
-        .faq-item.active .faq-icon { transform: rotate(180deg); color: #fff; }
+        .faq-item.open .faq-icon { transform: rotate(180deg); color: #fff; }
 
         .faq-answer { 
             max-height: 0; overflow: hidden; 
@@ -195,7 +195,7 @@
             font-weight: 300; opacity: 0; padding: 0 30px;
         }
 
-        .faq-item.active .faq-answer { 
+        .faq-item.open .faq-answer { 
             max-height: 300px; opacity: 1; padding-bottom: 30px; 
         }
 
@@ -816,18 +816,18 @@
             });
         });
 
-        // ИСПРАВЛЕННЫЙ СКРИПТ FAQ (КАРТОЧКИ)
+       // ИСПРАВЛЕННЫЙ СКРИПТ FAQ (БЕЗ КОНФЛИКТА КЛАССОВ)
         document.querySelectorAll('.faq-question').forEach(q => {
             q.onclick = () => {
                 const item = q.parentElement;
-                const isActive = item.classList.contains('active');
+                const isOpen = item.classList.contains('open');
                 
-                // Закрываем другие, если хочешь (аккордеон)
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                // Закрываем все остальные открытые вкладки
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
                 
-                // Если был закрыт — открываем
-                if(!isActive) {
-                    item.classList.add('active');
+                // Если кликнули по закрытой — открываем её
+                if(!isOpen) {
+                    item.classList.add('open');
                 }
             }
         });
