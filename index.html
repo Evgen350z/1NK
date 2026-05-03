@@ -114,6 +114,31 @@
         .card h3 { font-size: 1.4rem; margin: 0 0 15px 0; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
         .card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0; font-weight: 300; }
 
+        /* НОВЫЕ ИКОНКИ ДЛЯ КАРТОЧЕК ARCHITECTURE */
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .card:hover .card-icon {
+            background: rgba(74, 158, 255, 0.08);
+            border-color: rgba(74, 158, 255, 0.3);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 158, 255, 0.15);
+        }
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 1.5;
+        }
         /* TESTIMONIALS (С АВАТАРКОЙ) */
         .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
         .testi-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px 80px; max-width: 900px; width: 100%; text-align: center; position: relative; margin: 0 auto; }
@@ -358,37 +383,65 @@
         </div>
     </section>
 
-    <!-- 4. ARCHITECTURE (ОБНОВЛЕННАЯ СЕТКА 3+3) -->
+    <!-- 4. ARCHITECTURE (С ПРЕМИАЛЬНЫМИ ИКОНКАМИ) -->
     <section id="capabilities">
         <h2 class="section-title reveal">Simple. Efficient. Scalable.</h2>
         <div class="grid">
-            <!-- Твои текущие блоки -->
+            
             <div class="card reveal delay-1">
+                <div class="card-icon">
+                    <!-- Иконка Data / Database -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                </div>
                 <h3>Data Ecosystems</h3>
                 <p>All your leads in one place. No more switching apps, no more chaos. One unified source of truth.</p>
             </div>
+            
             <div class="card reveal delay-2">
+                <div class="card-icon">
+                    <!-- Иконка Pipelines / Workflow -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>
+                </div>
                 <h3>Autonomous Pipelines</h3>
                 <p>Every message gets a reply. Every lead is tracked. Automatically from first click to final booking.</p>
             </div>
+            
             <div class="card reveal delay-3">
+                <div class="card-icon">
+                    <!-- Иконка Cognitive Logic / AI Brain -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
                 <h3>Cognitive Logic</h3>
                 <p>The system qualifies, responds, and guides clients through the funnel — without you lifting a finger.</p>
             </div>
 
-            <!-- НОВЫЕ БЛОКИ ДЛЯ КОНВЕРСИИ -->
             <div class="card reveal delay-4">
+                <div class="card-icon">
+                    <!-- Иконка Speed / Zap -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
                 <h3>Zero Latency Response</h3>
                 <p>Speed is your ultimate edge. Our systems engage leads in under 10 seconds, capturing interest long before your competitors even see the notification.</p>
             </div>
+            
             <div class="card reveal delay-5">
+                <div class="card-icon">
+                    <!-- Иконка Connectivity / Link -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                </div>
                 <h3>Seamless Connectivity</h3>
                 <p>We engineer invisible bridges between your CRM and marketing tools, allowing data to flow perfectly without disrupting your established operations.</p>
             </div>
+            
             <div class="card reveal delay-6">
+                <div class="card-icon">
+                    <!-- Иконка Predictive Performance / Chart -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
                 <h3>Predictive Performance</h3>
                 <p>Stop guessing. The infrastructure tracks every conversation pattern, giving you a clear, data-backed map of how to scale your revenue to the next level.</p>
             </div>
+
         </div>
     </section>
 
