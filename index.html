@@ -15,9 +15,16 @@
             --accent-blue: #4a9eff;
         }
 
+        /* ЭФФЕКТ ВАУ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ (Cinematic Entrance) */
         body { 
-            margin: 0; background-color: var(--bg-color); color: var(--text-main); 
+            margin: 0; background-color: #000; color: var(--text-main); 
             font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+            animation: cinematicFadeIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cinematicFadeIn {
+            0% { opacity: 0; filter: blur(15px); transform: scale(1.02); }
+            100% { opacity: 1; filter: blur(0); transform: scale(1); }
         }
 
         /* НАВИГАЦИЯ */
@@ -51,11 +58,11 @@
         .badge { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.12); padding: 8px 20px; border-radius: 60px; font-size: 0.9rem; color: #ccc; margin-bottom: 35px; display: inline-flex; align-items: center; gap: 12px; backdrop-filter: blur(10px); }
         .badge span { background: #fff; color: #000; padding: 3px 10px; border-radius: 20px; font-weight: 600; font-size: 0.75rem; }
         
-        h1 { font-size: clamp(2.5rem, 6vw, 5.2rem); font-weight: 400; letter-spacing: -2px; margin: 0; line-height: 1.1; color: #fff; max-width: 1100px; width: 100%; word-wrap: break-word; }
+        /* ИСПРАВЛЕННЫЙ ЗАГОЛОВОК (БОЛЬШЕ НЕ ОБРЕЗАЕТСЯ НА IPAD) */
+        h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); font-weight: 400; letter-spacing: -2px; margin: 0 auto; line-height: 1.15; color: #fff; max-width: 1000px; width: 100%; white-space: normal; word-wrap: break-word; }
         h1 span { color: #888; font-style: italic; }
-        @media (min-width: 769px) { h1 { white-space: nowrap; } }
 
-        .subtitle { color: #aaa; font-size: 1.35rem; max-width: 800px; margin: 35px auto 50px; line-height: 1.6; font-weight: 300; }
+        .subtitle { color: #aaa; font-size: 1.25rem; max-width: 800px; margin: 35px auto 50px; line-height: 1.6; font-weight: 300; }
         
         /* КНОПКИ */
         .btn-group { display: flex; gap: 20px; justify-content: center; align-items: center; }
@@ -65,30 +72,27 @@
         .btn-secondary { background: rgba(255,255,255,0.04); color: #fff; border: 1px solid rgba(255,255,255,0.18); backdrop-filter: blur(10px); }
         .btn-secondary:hover { border-color: rgba(255,255,255,0.5); transform: translateY(-4px); background: rgba(255,255,255,0.08); }
         
-        .trust-micro { margin-top: 25px; font-size: 0.9rem; color: #666; font-weight: 300; letter-spacing: 0.5px; }
-
         /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
         section { padding: 120px 25px; max-width: 1150px; margin: 0 auto; position: relative; z-index: 1; }
         .section-title { font-size: 3rem; font-weight: 400; text-align: center; color: #fff; margin-bottom: 60px; letter-spacing: -1.5px; line-height: 1.2; }
 
-        /* АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ */
-        .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
+        /* ПЛАВНЫЙ КАСКАДНЫЙ REVEAL ПРИ СКРОЛЛЕ */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.25s; }
         .delay-3 { transition-delay: 0.4s; }
         .delay-4 { transition-delay: 0.55s; }
-        .delay-5 { transition-delay: 0.7s; } 
+        .delay-5 { transition-delay: 0.7s; }
         .delay-6 { transition-delay: 0.85s; }
 
-        /* OUTCOMES */
-        .features-line-container { display: flex; justify-content: space-between; position: relative; padding: 20px 0; gap: 50px; }
-        .features-line-container::before { content: ''; position: absolute; top: 50px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 80%, transparent); z-index: 0; }
-        .feature-line-item { flex: 1; text-align: center; position: relative; z-index: 1; }
-        .feature-icon { width: 90px; height: 90px; margin: 0 auto 25px; background: #070707; border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.4s ease; box-shadow: inset 0 10px 20px rgba(255,255,255,0.02); }
+        /* OUTCOMES (6 ИКОНОК В СЕТКЕ) */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px 30px; position: relative; padding: 20px 0; }
+        .feature-line-item { text-align: center; position: relative; z-index: 1; }
+        .feature-icon { width: 80px; height: 80px; margin: 0 auto 25px; background: #070707; border: 1px solid var(--border-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.4s ease; box-shadow: inset 0 10px 20px rgba(255,255,255,0.02); }
         .feature-line-item:hover .feature-icon { border-color: var(--accent-blue); color: var(--accent-blue); transform: translateY(-8px); box-shadow: 0 0 30px rgba(74, 158, 255, 0.15); }
-        .feature-icon svg { width: 32px; height: 32px; stroke-width: 1.5; }
-        .feature-line-item h3 { font-size: 1.4rem; font-weight: 500; margin: 0 0 12px 0; color: #fff; }
+        .feature-icon svg { width: 30px; height: 30px; stroke-width: 1.5; }
+        .feature-line-item h3 { font-size: 1.3rem; font-weight: 500; margin: 0 0 12px 0; color: #fff; }
         .feature-line-item p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin: 0; font-weight: 300; }
 
         /* THE REALITY */
@@ -156,20 +160,36 @@
         .for-list.no li { color: #666; }
         .for-list.no span { color: #f44336; font-size: 1.6rem; font-weight: 600; }
 
-        /* ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН */
+        /* ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН (БЕЗ БАГОВ) */
         .faq-container { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--border-color); }
-        .faq-item { border-bottom: 1px solid var(--border-color); overflow: hidden; }
+        .faq-item { border-bottom: 1px solid var(--border-color); }
         .faq-question { width: 100%; text-align: left; padding: 25px 0; background: transparent; border: none; color: #fff; font-size: 1.2rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
         .faq-question:hover { color: var(--accent-blue); }
         .faq-icon { font-size: 1.8rem; color: #555; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 300; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; font-weight: 300; }
-        .faq-item.active .faq-answer { padding-bottom: 25px; }
+        
+        .faq-answer { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            color: var(--text-muted); 
+            font-size: 1.05rem; 
+            line-height: 1.6; 
+            font-weight: 300; 
+            opacity: 0;
+            padding: 0 10px;
+        }
+        /* При добавлении класса active CSS сам раскрывает блок */
+        .faq-item.active .faq-answer { 
+            max-height: 500px; 
+            opacity: 1;
+            padding: 0 10px 25px 10px;
+        }
 
         /* ФИНАЛЬНЫЙ CTA */
         .final-cta-card { background: linear-gradient(180deg, rgba(74, 158, 255, 0.05) 0%, transparent 100%); border: 1px solid rgba(74, 158, 255, 0.2); border-radius: 30px; padding: 100px 40px; text-align: center; }
 
-        /* ВОССТАНОВЛЕННЫЙ ФУТЕР СО ВСЕМИ ИКОНКАМИ */
+        /* ФУТЕР СО ВСЕМИ ИКОНКАМИ */
         .footer { border-top: 1px solid var(--border-color); padding: 80px 50px; background: #000; }
         .footer-content { max-width: 1150px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
         .footer-left .logo { font-size: 1.6rem; margin-bottom: 12px; display: inline-block; color: #fff; }
@@ -195,12 +215,11 @@
         .close-btn:hover { color: #fff; }
 
         @media (max-width: 768px) {
-            h1 { font-size: 3.2rem; white-space: normal; letter-spacing: -2px; }
+            h1 { font-size: 2.8rem; white-space: normal; letter-spacing: -1px; }
             nav { padding: 20px 25px; }
             .nav-links { display: none; }
             .for-grid { grid-template-columns: 1fr; gap: 40px; }
-            .features-line-container { flex-direction: column; gap: 50px; }
-            .features-line-container::before { display: none; }
+            .features-grid { grid-template-columns: 1fr; gap: 50px; }
             .comparison-grid { grid-template-columns: 1fr; }
             .pricing-card { min-width: 88vw; }
             .testi-card { padding: 60px 25px; }
@@ -242,21 +261,20 @@
         </div>
 
         <div class="hero-content">
-            <div class="badge reveal delay-1 active"><span>1NK</span> AI Revenue Infrastructure</div>
-            <h1 class="reveal delay-2 active">You’re not losing clients.<br><span>You’re losing them in your messages.</span></h1>
-            <p class="subtitle reveal delay-3 active">We turn missed messages into booked clients — automatically.<br>More bookings. Same leads. No extra ads.</p>
-            <div class="btn-group reveal delay-4 active">
+            <div class="badge reveal delay-2 active"><span>1NK</span> AI Revenue Infrastructure</div>
+            <h1 class="reveal delay-3 active">You’re not losing clients.<br><span>You’re losing them in your messages.</span></h1>
+            <p class="subtitle reveal delay-4 active">We turn missed messages into booked clients — automatically.<br>More bookings. Same leads. No extra ads.</p>
+            <div class="btn-group reveal delay-5 active">
                 <button onclick="openModal()" class="btn btn-primary">Get Free Lead Audit</button>
                 <a href="#outcomes" class="btn btn-secondary">See how it works</a>
             </div>
         </div>
     </section>
 
-    <!-- 2. OUTCOMES (ОБНОВЛЕННЫЙ БЛОК: 6 ИКОНОК) -->
+    <!-- 2. OUTCOMES (6 ИКОНОК С КАСКАДНОЙ АНИМАЦИЕЙ) -->
     <section id="outcomes">
         <h2 class="section-title reveal">Built to capture every dollar.</h2>
-        <div class="grid">
-            <!-- РЯД 1 -->
+        <div class="features-grid">
             <div class="feature-line-item reveal delay-1">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
@@ -264,15 +282,13 @@
                 <h3>+30–50% Bookings</h3>
                 <p>Turn existing website traffic and ad clicks into immediate appointments without spending more on marketing.</p>
             </div>
-
             <div class="feature-line-item reveal delay-2">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                 </div>
                 <h3>Instant Response</h3>
-                <p>80% of sales go to the first responder. Our AI engages leads in under 10 seconds, 24/7, across all your channels.</p>
+                <p>80% of sales go to the first responder. Our AI engages leads in under 10 seconds, 24/7, across all channels.</p>
             </div>
-
             <div class="feature-line-item reveal delay-3">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="18" y1="8" x2="23" y2="13"></line><line x1="23" y1="8" x2="18" y2="13"></line></svg>
@@ -280,8 +296,6 @@
                 <h3>Smart Qualification</h3>
                 <p>The system asks the right questions and filters out "tire-kickers," delivering only high-intent clients to your team.</p>
             </div>
-
-            <!-- РЯД 2 -->
             <div class="feature-line-item reveal delay-4">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -289,7 +303,6 @@
                 <h3>Revenue Protection</h3>
                 <p>Identify where leads drop off in your funnel. We plug the leaks and track every dollar of potentially lost revenue.</p>
             </div>
-
             <div class="feature-line-item reveal delay-5">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
@@ -297,7 +310,6 @@
                 <h3>Auto Data-Sync</h3>
                 <p>Eliminate manual entry. Our systems sync leads, notes, and bookings directly into your CRM, ERP, or Google Sheets.</p>
             </div>
-
             <div class="feature-line-item reveal delay-6">
                 <div class="feature-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
@@ -352,7 +364,7 @@
         </div>
     </section>
 
-    <!-- 5. ВОССТАНОВЛЕННЫЕ ОТЗЫВЫ -->
+    <!-- 5. ОТЗЫВЫ -->
     <section id="reviews" class="reveal">
         <h2 class="section-title" style="margin-bottom: 40px;">Don't take our word for it</h2>
         <div class="testimonials-wrapper">
@@ -483,7 +495,7 @@
         </div>
     </section>
 
-    <!-- 8. ИСПРАВЛЕННЫЙ FAQ (10 + 2 НОВЫХ) -->
+    <!-- 8. ИСПРАВЛЕННЫЙ FAQ (ОТКРЫВАЕТСЯ ПЛАВНО) -->
     <section id="faq">
         <h2 class="section-title reveal">Common Questions</h2>
         <div class="faq-container">
@@ -539,7 +551,7 @@
         </div>
     </section>
 
-    <!-- 10. ВОССТАНОВЛЕННЫЙ ФУТЕР СО ВСЕМИ ИКОНКАМИ -->
+    <!-- 10. ФУТЕР СО ВСЕМИ ИКОНКАМИ -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
@@ -605,7 +617,6 @@
                 x: cx + Math.cos(angle) * radius,
                 y: cy + Math.sin(angle) * radius,
                 size: Math.random() * 1.5 + 0.5,
-                // СКОРОСТЬ ЗАМЕДЛЕНА В 3 РАЗА
                 speed: Math.random() * 0.003 + 0.001, 
                 alpha: randomizeAlpha ? Math.random() : 0,
                 angle: angle,
@@ -620,7 +631,6 @@
 
             particles.forEach(p => {
                 p.dist -= p.dist * p.speed; 
-                // ВРАЩЕНИЕ ЗАМЕДЛЕНО В 3 РАЗА
                 p.angle += 0.001; 
 
                 p.x = cx + Math.cos(p.angle) * p.dist;
@@ -655,7 +665,7 @@
         }, {threshold: 0.1, rootMargin: "0px 0px -50px 0px"});
         document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        // ВОССТАНОВЛЕННАЯ ЛОГИКА ОТЗЫВОВ С АВАТАРКАМИ
+        // ЛОГИКА ОТЗЫВОВ С АВАТАРКАМИ
         const reviews = [
             { text: "We were missing 10–15 leads a week. Now we miss zero.", name: "Alex M.", role: "Local Service Owner", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
             { text: "Same ad budget. ~35% more bookings within a month.", name: "Sarah K.", role: "Beauty Studio", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
@@ -727,14 +737,19 @@
             });
         });
 
-        // ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН
+        // ИСПРАВЛЕННЫЙ FAQ (ТЕПЕРЬ РАБОТАЕТ БЕЗ БАГОВ)
         document.querySelectorAll('.faq-question').forEach(q => {
             q.onclick = () => {
                 const item = q.parentElement;
-                const answer = q.nextElementSibling;
-                const active = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('active'); i.querySelector('.faq-answer').style.maxHeight = null; });
-                if(!active) { item.classList.add('active'); answer.style.maxHeight = answer.scrollHeight + "px"; }
+                const isActive = item.classList.contains('active');
+                
+                // Закрываем все открытые вкладки
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                
+                // Если кликнули по закрытой, открываем её
+                if(!isActive) {
+                    item.classList.add('active');
+                }
             }
         });
 
