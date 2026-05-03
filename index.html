@@ -34,7 +34,7 @@
         .lang-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
         .lang-dropdown:hover .lang-content { display: block; }
 
-        /* HERO СЕКЦИЯ (НОВЫЙ XTRACT ЭФФЕКТ) */
+        /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
         .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; overflow: hidden; background: #000; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .hero-content { position: relative; z-index: 2; width: 100%; }
         
@@ -42,7 +42,7 @@
         #heroCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
 
         /* Вращающееся глубокое свечение в центре */
-        .hero-glow-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90vw; max-width: 1000px; height: 90vw; max-height: 1000px; z-index: 1; pointer-events: none; animation: spinGlow 30s linear infinite; }
+        .hero-glow-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90vw; max-width: 1000px; height: 90vw; max-height: 1000px; z-index: 1; pointer-events: none; animation: spinGlow 40s linear infinite; }
         .hero-glow-1 { position: absolute; top: 15%; left: 15%; right: 15%; bottom: 15%; border-radius: 50%; background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(74, 158, 255, 0.15) 140deg, transparent 180deg, rgba(74, 158, 255, 0.15) 320deg, transparent 360deg); filter: blur(70px); }
         .hero-glow-2 { position: absolute; top: 30%; left: 30%; right: 30%; bottom: 30%; border-radius: 50%; background: radial-gradient(circle, rgba(20, 80, 255, 0.15) 0%, transparent 70%); filter: blur(40px); }
         
@@ -69,10 +69,9 @@
 
         /* ОБЩИЕ СТИЛИ СЕКЦИЙ */
         section { padding: 120px 25px; max-width: 1150px; margin: 0 auto; position: relative; z-index: 1; }
-        .section-tag { color: var(--accent-blue); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 20px; display: block; text-align: center; font-weight: 500; }
         .section-title { font-size: 3rem; font-weight: 400; text-align: center; color: #fff; margin-bottom: 60px; letter-spacing: -1.5px; line-height: 1.2; }
 
-        /* АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ (УЛУЧШЕННЫЕ) */
+        /* АНИМАЦИИ ПОЯВЛЕНИЯ ПРИ СКРОЛЛЕ */
         .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
@@ -109,14 +108,21 @@
         .card h3 { font-size: 1.4rem; margin: 0 0 15px 0; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
         .card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0; font-weight: 300; }
 
-        /* TESTIMONIALS (КАРУСЕЛЬ) */
-        .testi-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 30px; padding: 80px 100px; text-align: center; position: relative; margin-top: 20px; }
-        .testi-text { font-size: 1.8rem; font-weight: 400; line-height: 1.5; margin-bottom: 35px; min-height: 110px; color: #fff; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 12px; }
-        .testi-author { font-size: 1.1rem; color: var(--accent-blue); font-weight: 500; letter-spacing: 0.5px; opacity: 0; transition: opacity 0.6s ease; }
+        /* TESTIMONIALS (С АВАТАРКОЙ) */
+        .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
+        .testi-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px 80px; max-width: 900px; width: 100%; text-align: center; position: relative; margin: 0 auto; }
+        .quote-icon { margin-bottom: 20px; display: flex; justify-content: center; }
+        .quote-icon svg { width: 36px; height: 36px; opacity: 0.8; }
+        .testi-text { font-size: 1.5rem; font-weight: 400; line-height: 1.6; margin-bottom: 30px; min-height: 100px; color: #fff; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 8px; }
+        .testi-author { display: flex; align-items: center; justify-content: center; gap: 16px; opacity: 0; transition: opacity 0.5s ease; }
         .testi-author.active { opacity: 1; }
+        .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: #222; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); filter: grayscale(100%); }
+        .testi-meta { text-align: left; }
+        .testi-name { font-weight: 500; font-size: 1rem; color: #fff; margin: 0 0 2px 0; }
+        .testi-role { font-size: 0.85rem; color: #666; margin: 0; }
         .nav-btn-testi { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; width: 50px; height: 50px; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s ease; }
         .nav-btn-testi:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
-        .nav-btn-testi.prev { left: 30px; } .nav-btn-testi.next { right: 30px; }
+        .nav-btn-testi.prev { left: -25px; } .nav-btn-testi.next { right: -25px; }
 
         /* ЦЕНЫ С БЛИКОМ КУРСОРA */
         .carousel-container { display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 15px 0 40px; scroll-behavior: smooth; scrollbar-width: none; }
@@ -148,26 +154,29 @@
         .for-list.no li { color: #666; }
         .for-list.no span { color: #f44336; font-size: 1.6rem; font-weight: 600; }
 
-        /* FAQ */
-        .faq-container { max-width: 850px; margin: 0 auto; border-top: 1px solid var(--border-color); }
-        .faq-item { border-bottom: 1px solid var(--border-color); }
-        .faq-question { width: 100%; text-align: left; padding: 30px 0; background: transparent; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s; }
+        /* ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН */
+        .faq-container { max-width: 800px; margin: 0 auto; border-top: 1px solid var(--border-color); }
+        .faq-item { border-bottom: 1px solid var(--border-color); overflow: hidden; }
+        .faq-question { width: 100%; text-align: left; padding: 25px 0; background: transparent; border: none; color: #fff; font-size: 1.2rem; font-weight: 400; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; transition: color 0.3s ease; }
         .faq-question:hover { color: var(--accent-blue); }
-        .faq-icon { font-size: 1.8rem; color: #444; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .faq-icon { font-size: 1.8rem; color: #555; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); font-weight: 300; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: #fff; }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; font-weight: 300; }
-        .faq-item.active .faq-answer { padding-bottom: 30px; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease; color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; font-weight: 300; }
+        .faq-item.active .faq-answer { padding-bottom: 25px; }
 
         /* ФИНАЛЬНЫЙ CTA */
         .final-cta-card { background: linear-gradient(180deg, rgba(74, 158, 255, 0.05) 0%, transparent 100%); border: 1px solid rgba(74, 158, 255, 0.2); border-radius: 30px; padding: 100px 40px; text-align: center; }
 
-        /* ФУТЕР */
+        /* ВОССТАНОВЛЕННЫЙ ФУТЕР СО ВСЕМИ ИКОНКАМИ */
         .footer { border-top: 1px solid var(--border-color); padding: 80px 50px; background: #000; }
         .footer-content { max-width: 1150px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 40px; }
-        .footer-left .logo { font-size: 1.6rem; margin-bottom: 12px; display: inline-block; }
+        .footer-left .logo { font-size: 1.6rem; margin-bottom: 12px; display: inline-block; color: #fff; }
         .footer-left p { color: #555; font-size: 0.9rem; margin: 0; }
-        .footer-socials { display: flex; gap: 20px; }
-        .footer-socials a { width: 45px; height: 45px; border-radius: 50%; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; transition: 0.4s ease; color: #777; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-links a { color: #666; text-decoration: none; font-size: 0.9rem; transition: 0.3s; }
+        .footer-links a:hover { color: #fff; }
+        .footer-socials { display: flex; gap: 16px; }
+        .footer-socials a { width: 45px; height: 45px; border-radius: 50%; background: transparent; border: 1px solid var(--border-color); display: flex; align-items: center; justify-content: center; transition: 0.4s ease; color: #888; }
         .footer-socials a:hover { border-color: var(--accent-blue); color: #fff; background: rgba(74, 158, 255, 0.05); }
         .footer-socials svg { width: 18px; height: 18px; fill: currentColor; }
 
@@ -194,6 +203,7 @@
             .pricing-card { min-width: 88vw; }
             .testi-card { padding: 60px 25px; }
             .testi-text { font-size: 1.4rem; }
+            .nav-btn-testi.prev { left: 10px; } .nav-btn-testi.next { right: 10px; }
             .footer-content { flex-direction: column; text-align: center; }
             .hero-glow-wrapper { width: 150vw; height: 150vw; }
         }
@@ -220,7 +230,7 @@
         </div>
     </nav>
 
-    <!-- 1. HERO (ЭФФЕКТ ЗАСАСЫВАЮЩИХСЯ ЧАСТИЦ) -->
+    <!-- 1. HERO (ЭФФЕКТ ЗАСАСЫВАЮЩИХСЯ ЧАСТИЦ XTRACT) -->
     <section class="hero">
         <!-- Скриптовый Canvas и CSS Вортекс -->
         <canvas id="heroCanvas"></canvas>
@@ -243,6 +253,7 @@
 
     <!-- 2. OUTCOMES -->
     <section id="outcomes">
+        <h2 class="section-title reveal" style="margin-bottom: 20px;">Why we exist.</h2>
         <div class="features-line-container">
             <div class="feature-line-item reveal delay-1">
                 <div class="feature-icon">
@@ -270,7 +281,6 @@
 
     <!-- 3. THE REALITY -->
     <section>
-        <span class="section-tag reveal">The Reality</span>
         <h2 class="section-title reveal">You’re not lacking leads.<br>You’re leaking them.</h2>
         <div class="comparison-grid">
             <div class="comp-card reveal delay-1">
@@ -296,7 +306,6 @@
 
     <!-- 4. ARCHITECTURE -->
     <section id="capabilities">
-        <span class="section-tag reveal">Architecture</span>
         <h2 class="section-title reveal">Simple. Efficient. Scalable.</h2>
         <div class="grid">
             <div class="card reveal delay-1">
@@ -314,24 +323,47 @@
         </div>
     </section>
 
-    <!-- 5. TESTIMONIALS -->
-    <section>
-        <div class="testi-card reveal">
-            <button class="nav-btn-testi prev" onclick="prevReview()">&#8592;</button>
-            <div class="testi-text" id="testi-text"></div>
-            <div class="testi-author" id="testi-author"></div>
-            <button class="nav-btn-testi next" onclick="nextReview()">&#8594;</button>
+    <!-- 5. ВОССТАНОВЛЕННЫЕ ОТЗЫВЫ -->
+    <section id="reviews" class="reveal">
+        <h2 class="section-title" style="margin-bottom: 40px;">Don't take our word for it</h2>
+        <div class="testimonials-wrapper">
+            <div class="testi-card">
+                <button class="nav-btn-testi prev" onclick="prevReview()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                
+                <div class="quote-icon">
+                    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M14 17H17L19 13V7H13V13H16L14 17ZM6 17H9L11 13V7H5V13H8L6 17Z"/></svg>
+                </div>
+
+                <div class="testi-text" id="testi-text"></div>
+                
+                <div class="testi-author" id="testi-author">
+                    <div class="testi-avatar" id="testi-avatar-container"></div>
+                    <div class="testi-meta">
+                        <p class="testi-name" id="testi-name"></p>
+                        <p class="testi-role" id="testi-role"></p>
+                    </div>
+                </div>
+
+                <button class="nav-btn-testi next" onclick="nextReview()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
         </div>
     </section>
 
     <!-- 6. INVESTMENT (4 ТАРИФА) -->
     <section id="pricing">
-        <span class="section-tag reveal">Investment</span>
         <div class="pricing-header reveal">
             <h2 class="section-title" style="margin: 0; text-align: left;">Stop losing clients.</h2>
             <div class="carousel-nav">
-                <button class="nav-btn-testi" style="position:static;" onclick="scrollPricing(-380)">&#8592;</button>
-                <button class="nav-btn-testi" style="position:static; margin-left:15px;" onclick="scrollPricing(380)">&#8594;</button>
+                <button class="nav-btn-testi" style="position:static;" onclick="scrollPricing(-380)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="nav-btn-testi" style="position:static; margin-left:15px;" onclick="scrollPricing(380)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
             </div>
         </div>
 
@@ -404,7 +436,6 @@
     <section>
         <div class="for-grid">
             <div class="reveal delay-1">
-                <span class="section-tag" style="text-align:left;">Target</span>
                 <h2 class="section-title" style="text-align:left;">Is this for you?</h2>
                 <ul class="for-list yes">
                     <li><span>✓</span> You get leads but lose some of them</li>
@@ -423,9 +454,8 @@
         </div>
     </section>
 
-    <!-- 8. FAQ (10 + 2 НОВЫХ) -->
+    <!-- 8. ИСПРАВЛЕННЫЙ FAQ (10 + 2 НОВЫХ) -->
     <section id="faq">
-        <span class="section-tag reveal">Clarity</span>
         <h2 class="section-title reveal">Common Questions</h2>
         <div class="faq-container">
             <div class="faq-item reveal">
@@ -480,7 +510,7 @@
         </div>
     </section>
 
-    <!-- 10. ФУТЕР -->
+    <!-- 10. ВОССТАНОВЛЕННЫЙ ФУТЕР СО ВСЕМИ ИКОНКАМИ -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
@@ -493,8 +523,15 @@
                 <a href="#">Terms of Service</a>
             </div>
             <div class="footer-socials">
-                <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
-                <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+                <a href="#" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="#" target="_blank" aria-label="WhatsApp">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.347-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                </a>
+                <a href="#" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
             </div>
         </div>
     </footer>
@@ -514,7 +551,7 @@
     </div>
 
     <script>
-        // АНИМАЦИЯ ВОРТЕКСА (XTRACT ЭФФЕКТ)
+        // ЗАМЕДЛЕННАЯ АНИМАЦИЯ ВОРТЕКСА (XTRACT ЭФФЕКТ)
         const canvas = document.getElementById('heroCanvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
@@ -533,13 +570,14 @@
             const cx = canvas.width / 2;
             const cy = canvas.height / 2;
             const angle = Math.random() * Math.PI * 2;
-            const radius = Math.random() * Math.max(canvas.width, canvas.height); // Спавн по всему радиусу
+            const radius = Math.random() * Math.max(canvas.width, canvas.height); 
             
             return {
                 x: cx + Math.cos(angle) * radius,
                 y: cy + Math.sin(angle) * radius,
                 size: Math.random() * 1.5 + 0.5,
-                speed: Math.random() * 0.01 + 0.005, // Скорость засасывания
+                // СКОРОСТЬ ЗАМЕДЛЕНА В 3 РАЗА
+                speed: Math.random() * 0.003 + 0.001, 
                 alpha: randomizeAlpha ? Math.random() : 0,
                 angle: angle,
                 dist: radius
@@ -552,20 +590,19 @@
             const cy = canvas.height / 2;
 
             particles.forEach(p => {
-                p.dist -= p.dist * p.speed; // Плавное ускорение к центру
-                p.angle += 0.003; // Закручивание
+                p.dist -= p.dist * p.speed; 
+                // ВРАЩЕНИЕ ЗАМЕДЛЕНО В 3 РАЗА
+                p.angle += 0.001; 
 
                 p.x = cx + Math.cos(p.angle) * p.dist;
                 p.y = cy + Math.sin(p.angle) * p.dist;
 
-                // Логика прозрачности
                 if (p.dist < 100) {
-                    p.alpha -= 0.05; // Затухание в центре
+                    p.alpha -= 0.05; 
                 } else if (p.alpha < 0.7) {
-                    p.alpha += 0.01; // Плавное появление на краях
+                    p.alpha += 0.01; 
                 }
 
-                // Респавн
                 if (p.alpha <= 0 || p.dist < 10) {
                     Object.assign(p, createParticle(false));
                     p.dist = Math.max(canvas.width, canvas.height) * (0.8 + Math.random() * 0.4); 
@@ -589,42 +626,68 @@
         }, {threshold: 0.1, rootMargin: "0px 0px -50px 0px"});
         document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        // ЛОГИКА ОТЗЫВОВ
+        // ВОССТАНОВЛЕННАЯ ЛОГИКА ОТЗЫВОВ С АВАТАРКАМИ
         const reviews = [
-            {t: "“We were missing 10–15 leads a week. Now we miss zero.”", a: "— Alex M., Local Service Owner"},
-            {t: "“Same ad budget. ~35% more bookings within a month.”", a: "— Sarah K., Beauty Studio"},
-            {t: "“It’s not automation — it’s like having a sales assistant 24/7.”", a: "— Daniel R., Agency Founder"}
+            { text: "We were missing 10–15 leads a week. Now we miss zero.", name: "Alex M.", role: "Local Service Owner", avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=150&q=80" },
+            { text: "Same ad budget. ~35% more bookings within a month.", name: "Sarah K.", role: "Beauty Studio", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=150&q=80" },
+            { text: "It’s not automation — it’s like having a sales assistant 24/7.", name: "Daniel R.", role: "Agency Founder", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80" }
         ];
-        let currentIdx = 0;
+
+        let currentReviewIndex = 0;
         let isAnimating = false;
 
-        function renderReview() {
+        function renderReview(index) {
             if(isAnimating) return;
             isAnimating = true;
+
             const textContainer = document.getElementById('testi-text');
             const authorContainer = document.getElementById('testi-author');
+            const avatarContainer = document.getElementById('testi-avatar-container');
             
             authorContainer.classList.remove('active');
             textContainer.innerHTML = '';
+            avatarContainer.innerHTML = `<img src="${reviews[index].avatar}" alt="${reviews[index].name}" style="width: 100%; height: 100%; object-fit: cover;">`;
+            document.getElementById('testi-name').innerText = reviews[index].name;
+            document.getElementById('testi-role').innerText = reviews[index].role;
+
+            const words = reviews[index].text.split(' ');
             
-            const words = reviews[currentIdx].t.split(' ');
-            words.forEach((w, i) => {
+            words.forEach((word, i) => {
                 const span = document.createElement('span');
-                span.innerText = w;
+                span.innerText = word;
                 span.style.opacity = '0';
-                span.style.transform = 'translateY(15px)';
-                span.style.transition = '0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-                span.style.transitionDelay = `${i * 0.05}s`;
+                span.style.transform = 'translateY(10px)';
+                span.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                span.style.transitionDelay = `${i * 0.04}s`;
                 textContainer.appendChild(span);
-                setTimeout(() => { span.style.opacity = '1'; span.style.transform = 'translateY(0)'; }, 50);
+
+                setTimeout(() => {
+                    span.style.opacity = '1';
+                    span.style.transform = 'translateY(0)';
+                }, 50);
             });
 
-            setTimeout(() => { authorContainer.innerText = reviews[currentIdx].a; authorContainer.classList.add('active'); isAnimating = false; }, words.length * 50 + 400);
+            setTimeout(() => {
+                authorContainer.classList.add('active');
+                isAnimating = false;
+            }, words.length * 40 + 400);
         }
 
-        function nextReview() { if(!isAnimating) { currentIdx = (currentIdx + 1) % reviews.length; renderReview(); } }
-        function prevReview() { if(!isAnimating) { currentIdx = (currentIdx - 1 + reviews.length) % reviews.length; renderReview(); } }
-        renderReview();
+        function nextReview() {
+            if(!isAnimating) {
+                currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+                renderReview(currentReviewIndex);
+            }
+        }
+
+        function prevReview() {
+            if(!isAnimating) {
+                currentReviewIndex = (currentReviewIndex - 1 + reviews.length) % reviews.length;
+                renderReview(currentReviewIndex);
+            }
+        }
+
+        renderReview(0);
 
         // ПОДСВЕТКА КАРТОЧЕК ЦЕН (MOUSTRACKING)
         document.querySelectorAll('.pricing-card').forEach(card => {
@@ -635,7 +698,7 @@
             });
         });
 
-        // FAQ АККОРДЕОН
+        // ИСПРАВЛЕННЫЙ FAQ АККОРДЕОН
         document.querySelectorAll('.faq-question').forEach(q => {
             q.onclick = () => {
                 const item = q.parentElement;
