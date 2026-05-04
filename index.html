@@ -425,6 +425,101 @@
         @media (max-width: 768px) {
             .marquee-container { animation: scrollMarquee 25s linear infinite; }
         }
+
+        /* ======================================================= */
+        /* --- PROOF: УЛЬТРА-КЕЙС И КАРУСЕЛЬ НИШ --- */
+        /* ======================================================= */
+        
+        .cases-section { padding-top: 60px; }
+
+        /* УЛЬТРА-КЕЙС (MED SPA) */
+        .ultra-case {
+            background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%);
+            border: 1px solid rgba(74, 158, 255, 0.2);
+            border-radius: 24px;
+            padding: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        
+        .ultra-case::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+        }
+
+        .uc-header { margin-bottom: 30px; }
+        .uc-badge { display: inline-block; background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; border: 1px solid rgba(74, 158, 255, 0.2); }
+        .uc-title { font-size: 2.2rem; margin: 0 0 10px 0; color: #fff; letter-spacing: -1px; }
+        .uc-location { color: #888; font-size: 1rem; display: flex; align-items: center; gap: 6px; }
+
+        .uc-block { margin-bottom: 30px; }
+        .uc-block h4 { color: #fff; font-size: 1.1rem; margin: 0 0 15px 0; display: flex; align-items: center; gap: 8px; }
+        .uc-list { list-style: none; padding: 0; margin: 0; }
+        .uc-list li { color: var(--text-muted); margin-bottom: 10px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
+        .uc-list.problem li::before { content: '✕'; color: #f44336; font-weight: bold; }
+        .uc-list.solution li::before { content: '✓'; color: #4caf50; font-weight: bold; }
+
+        /* Панель с результатами (правая колонка) */
+        .uc-results { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        .uc-metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 30px; }
+        .uc-metric { border-left: 2px solid var(--accent-blue); padding-left: 15px; }
+        .uc-metric-val { font-size: 2rem; color: #fff; font-weight: 500; margin-bottom: 5px; letter-spacing: -1px; }
+        .uc-metric-label { color: #666; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .uc-money { background: rgba(74, 158, 255, 0.05); border: 1px solid rgba(74, 158, 255, 0.2); padding: 25px; border-radius: 12px; text-align: center; }
+        .uc-money-val { font-size: 2.8rem; color: var(--accent-blue); font-weight: 400; letter-spacing: -2px; margin-bottom: 5px; }
+        .uc-money-label { color: #ccc; font-size: 1rem; }
+        
+        .uc-tech { margin-top: 25px; display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+        .uc-tech span { font-size: 0.75rem; color: #666; border: 1px solid #333; padding: 4px 10px; border-radius: 4px; }
+
+        /* КАРУСЕЛЬ МИНИ-КЕЙСОВ */
+        .cases-slider-wrapper { position: relative; width: 100vw; margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%); padding: 20px 0 40px; }
+        .cases-carousel { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 0 50px; }
+        .cases-carousel::-webkit-scrollbar { display: none; }
+        
+        .slide-card {
+            min-width: 380px; height: 480px; flex: 0 0 auto; scroll-snap-align: center;
+            border-radius: 20px; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s ease;
+            cursor: grab;
+        }
+        
+        /* Темный градиент поверх фото, чтобы текст читался */
+        .slide-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 50%, #000 100%); z-index: 1; }
+        /* Эффект увеличения фото при наведении */
+        .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .slide-card:hover .slide-bg { transform: scale(1.08); }
+        .slide-card:hover { border-color: rgba(255,255,255,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.8); }
+
+        .slide-content { position: relative; z-index: 2; }
+        .slide-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .slide-icon { font-size: 1.5rem; background: rgba(0,0,0,0.5); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); }
+        .slide-geo { font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; gap: 4px; }
+        
+        .slide-title { font-size: 1.3rem; color: #fff; margin: 0 0 15px 0; font-weight: 500; }
+        
+        .slide-data { display: grid; grid-template-columns: 1fr; gap: 10px; margin-bottom: 20px; }
+        .sd-row { display: flex; flex-direction: column; gap: 4px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .sd-row:last-child { border: none; padding-bottom: 0; }
+        .sd-label { font-size: 0.75rem; color: #666; text-transform: uppercase; letter-spacing: 1px; }
+        .sd-val { font-size: 0.95rem; color: #ccc; }
+        .sd-row.result .sd-val { color: #4caf50; font-weight: 500; }
+
+        .slider-controls { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+
+        @media (max-width: 900px) {
+            .ultra-case { grid-template-columns: 1fr; padding: 30px; gap: 30px; }
+            .slide-card { min-width: 85vw; }
+            .cases-carousel { padding: 0 20px; }
+        }
     </style>
 </head>
 <body>
@@ -710,6 +805,224 @@
                 <p>Stop guessing. The infrastructure tracks every conversation pattern, giving you a clear, data-backed map of how to scale your revenue to the next level.</p>
             </div>
 
+        </div>
+    </section>
+
+    <!-- 4.5 PROOF OF WORK (УЛЬТРА-КЕЙС + КАРУСЕЛЬ) -->
+    <section class="cases-section">
+        <h2 class="section-title reveal">The proof is in the revenue.</h2>
+        
+        <!-- УЛЬТРА КЕЙС -->
+        <div class="ultra-case reveal delay-1">
+            <div class="uc-content">
+                <div class="uc-header">
+                    <div class="uc-badge">Featured Case Study</div>
+                    <h3 class="uc-title">Aesthetic Med Spa</h3>
+                    <div class="uc-location"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> Miami, FL</div>
+                </div>
+
+                <div class="uc-block">
+                    <h4><span style="font-size:1.2rem;">❌</span> The Leak (Before)</h4>
+                    <ul class="uc-list problem">
+                        <li>30–90 min response delays</li>
+                        <li>High-intent leads turning cold</li>
+                        <li>Zero automated follow-ups</li>
+                        <li>Overwhelmed front desk staff</li>
+                    </ul>
+                </div>
+
+                <div class="uc-block">
+                    <h4><span style="font-size:1.2rem;">⚙️</span> 1NK Infrastructure</h4>
+                    <p style="color:#aaa; font-size:0.95rem; line-height:1.6; margin:0 0 15px 0;">We didn’t just automate replies — we built a full client handling ecosystem.</p>
+                    <ul class="uc-list solution">
+                        <li>Instant replies across IG, WhatsApp & Web</li>
+                        <li>AI lead qualification (service, budget, urgency)</li>
+                        <li>Automated multi-step follow-ups (1d / 3d / 7d)</li>
+                        <li>Direct CRM & Calendar integration</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="uc-results">
+                <h4 style="color:#fff; margin:0 0 25px 0; font-size:1.1rem; text-align:center;">Results within 30 days</h4>
+                
+                <div class="uc-metrics-grid">
+                    <div class="uc-metric">
+                        <div class="uc-metric-val">&lt; 2 min</div>
+                        <div class="uc-metric-label">Response Time</div>
+                    </div>
+                    <div class="uc-metric">
+                        <div class="uc-metric-val" style="color:#4caf50;">+31%</div>
+                        <div class="uc-metric-label">Booked Appts</div>
+                    </div>
+                    <div class="uc-metric">
+                        <div class="uc-metric-val" style="color:#4a9eff;">+18%</div>
+                        <div class="uc-metric-label">Recovered Leads</div>
+                    </div>
+                    <div class="uc-metric">
+                        <div class="uc-metric-val" style="color:#ffbd2e;">-40%</div>
+                        <div class="uc-metric-label">Admin Workload</div>
+                    </div>
+                </div>
+
+                <div class="uc-money">
+                    <div class="uc-money-val">+$7,500</div>
+                    <div class="uc-money-label">Additional Monthly Revenue</div>
+                    <p style="color:#666; font-size:0.8rem; margin:10px 0 0 0;">Based on ~$300 avg. client value & 25 extra bookings</p>
+                </div>
+                
+                <div class="uc-tech">
+                    <span>n8n Workflows</span>
+                    <span>1NK Cognitive Logic</span>
+                    <span>CRM Integration</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- КАРУСЕЛЬ МИНИ-КЕЙСОВ -->
+        <div class="cases-slider-wrapper reveal delay-2">
+            <div class="cases-carousel" id="casesCarousel">
+                
+                <!-- 1. Solar -->
+                <div class="slide-card">
+                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Solar" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-icon">☀️</div>
+                            <div class="slide-geo">Sydney, AU</div>
+                        </div>
+                        <h4 class="slide-title">Solar Installation</h4>
+                        <div class="slide-data">
+                            <div class="sd-row">
+                                <span class="sd-label">Before</span>
+                                <span class="sd-val">Hours to reply, dropping leads.</span>
+                            </div>
+                            <div class="sd-row">
+                                <span class="sd-label">1NK Fix</span>
+                                <span class="sd-val">Instant AI qualification & booking.</span>
+                            </div>
+                            <div class="sd-row result">
+                                <span class="sd-label">Outcome</span>
+                                <span class="sd-val">+34% more consultations.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Detailing -->
+                <div class="slide-card">
+                    <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=600&q=80" alt="Car Detailing" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-icon">🚗</div>
+                            <div class="slide-geo">Los Angeles, CA</div>
+                        </div>
+                        <h4 class="slide-title">Mobile Detailing</h4>
+                        <div class="slide-data">
+                            <div class="sd-row">
+                                <span class="sd-label">Before</span>
+                                <span class="sd-val">Manual IG DMs, no booking system.</span>
+                            </div>
+                            <div class="sd-row">
+                                <span class="sd-label">1NK Fix</span>
+                                <span class="sd-val">Geo-routing logic & auto-pricing via AI.</span>
+                            </div>
+                            <div class="sd-row result">
+                                <span class="sd-label">Outcome</span>
+                                <span class="sd-val">+27% stable bookings flow.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Roofing -->
+                <div class="slide-card">
+                    <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80" alt="Roofing" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-icon">🏠</div>
+                            <div class="slide-geo">Dallas, TX</div>
+                        </div>
+                        <h4 class="slide-title">Roofing Services</h4>
+                        <div class="slide-data">
+                            <div class="sd-row">
+                                <span class="sd-label">Before</span>
+                                <span class="sd-val">Missed calls = lost money. Chaos.</span>
+                            </div>
+                            <div class="sd-row">
+                                <span class="sd-label">1NK Fix</span>
+                                <span class="sd-val">Missed-call AI SMS & lead distribution.</span>
+                            </div>
+                            <div class="sd-row result">
+                                <span class="sd-label">Outcome</span>
+                                <span class="sd-val">25% of missed leads recovered.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Law Firm -->
+                <div class="slide-card">
+                    <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80" alt="Law Firm" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-icon">⚖️</div>
+                            <div class="slide-geo">New York, NY</div>
+                        </div>
+                        <h4 class="slide-title">Immigration Law</h4>
+                        <div class="slide-data">
+                            <div class="sd-row">
+                                <span class="sd-label">Before</span>
+                                <span class="sd-val">Wasted time on unqualified inquiries.</span>
+                            </div>
+                            <div class="sd-row">
+                                <span class="sd-label">1NK Fix</span>
+                                <span class="sd-val">Strict AI filtering & calendar sync.</span>
+                            </div>
+                            <div class="sd-row result">
+                                <span class="sd-label">Outcome</span>
+                                <span class="sd-val">Zero junk calls, higher close rate.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Gym -->
+                <div class="slide-card">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Gym" class="slide-bg">
+                    <div class="slide-content">
+                        <div class="slide-header">
+                            <div class="slide-icon">🏋️</div>
+                            <div class="slide-geo">Munich, DE</div>
+                        </div>
+                        <h4 class="slide-title">Fitness Studio</h4>
+                        <div class="slide-data">
+                            <div class="sd-row">
+                                <span class="sd-label">Before</span>
+                                <span class="sd-val">Ghosting after initial message.</span>
+                            </div>
+                            <div class="sd-row">
+                                <span class="sd-label">1NK Fix</span>
+                                <span class="sd-val">Trial auto-booking & ghost follow-ups.</span>
+                            </div>
+                            <div class="sd-row result">
+                                <span class="sd-label">Outcome</span>
+                                <span class="sd-val">+22% new memberships via IG.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Кнопки управления каруселью -->
+            <div class="slider-controls">
+                <button class="nav-btn-testi" style="position:relative; left:0; transform:none;" onclick="document.getElementById('casesCarousel').scrollBy({left: -400, behavior: 'smooth'})">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                </button>
+                <button class="nav-btn-testi" style="position:relative; right:0; transform:none;" onclick="document.getElementById('casesCarousel').scrollBy({left: 400, behavior: 'smooth'})">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </button>
+            </div>
         </div>
     </section>
 
