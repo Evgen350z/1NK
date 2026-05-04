@@ -239,17 +239,116 @@
         .nav-btn-testi:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
         .nav-btn-testi.prev { left: -25px; } .nav-btn-testi.next { right: -25px; }
 
-        /* ЦЕНЫ С БЛИКОМ КУРСОРA */
-        .carousel-container { display: flex; gap: 30px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 15px 0 40px; scroll-behavior: smooth; scrollbar-width: none; }
-        .carousel-container::-webkit-scrollbar { display: none; }
-        .pricing-card { min-width: 360px; flex: 0 0 auto; scroll-snap-align: center; background: #060606; border: 1px solid var(--border-color); border-radius: 20px; padding: 50px 40px; position: relative; transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; }
-        .pricing-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: inherit; background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255,255,255,0.08), transparent 40%); z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.4s; }
-        .pricing-card:hover::before { opacity: 1; }
-        .pricing-card:hover { border-color: rgba(255,255,255,0.4); transform: translateY(-8px); }
-        .pricing-card.popular { border-color: rgba(74, 158, 255, 0.5); background: #0a0a0a; transform: scale(1.03); }
-        .pricing-card.popular:hover { border-color: #fff; }
-        .popular-badge { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: #fff; color: #000; padding: 5px 20px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+        /* ======================================================= */
+        /* --- PRICING SECTION (SHADOWS & NEUTRAL TONES) --- */
+        /* ======================================================= */
+        
+        .pricing-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
+        .carousel-container { 
+            display: flex; 
+            gap: 30px; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            padding: 30px 0 50px; /* Увеличили верхний паддинг, чтобы плашка не резалась */
+            scroll-behavior: smooth; 
+            scrollbar-width: none; 
+        }
+        .carousel-container::-webkit-scrollbar { display: none; }
+        
+        .pricing-card { 
+            min-width: 380px; 
+            flex: 0 0 auto; 
+            scroll-snap-align: center; 
+            background: #060606; 
+            border: 1px solid rgba(255,255,255,0.06); 
+            border-radius: 20px; 
+            padding: 50px 40px; 
+            position: relative; 
+            transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+            display: flex; 
+            flex-direction: column; 
+        }
+        
+        .pricing-card::before { 
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            border-radius: inherit; 
+            background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(255,255,255,0.06), transparent 40%); 
+            z-index: 0; pointer-events: none; opacity: 0; transition: opacity 0.4s; 
+        }
+        .pricing-card:hover::before { opacity: 1; }
+        .pricing-card:hover { 
+            border-color: rgba(255,255,255,0.2); 
+            transform: translateY(-8px); 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+        
+        /* Популярный тариф: работаем с тенями и белым свечением, без синего */
+        .pricing-card.popular { 
+            border-color: rgba(255,255,255,0.15); 
+            background: #0a0a0a; 
+            transform: scale(1.02); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+        }
+        .pricing-card.popular:hover { 
+            border-color: rgba(255,255,255,0.4); 
+        }
+        
+        .popular-badge { 
+            position: absolute; 
+            top: -15px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: #fff; 
+            color: #000; 
+            padding: 6px 22px; 
+            border-radius: 30px; 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            box-shadow: 0 4px 15px rgba(255,255,255,0.2);
+        }
+
+        .price-retainer { font-size: 2.8rem; font-weight: 400; margin: 15px 0 5px; color: #fff; letter-spacing: -1.5px; }
+        .price-retainer span { font-size: 1rem; color: #666; letter-spacing: 0; }
+        .price-setup { font-size: 0.95rem; color: #aaa; margin-bottom: 25px; line-height: 1.5; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px;}
+        
+        ul.features { list-style: none; padding: 0; margin: 0 0 25px 0; flex-grow: 1; }
+        ul.features li { display: flex; align-items: flex-start; gap: 14px; padding: 12px 0; font-size: 0.95rem; color: #ccc; font-weight: 300; line-height: 1.5; }
+        ul.features svg { flex-shrink: 0; width: 18px; height: 18px; color: #fff; margin-top: 2px; opacity: 0.9; }
+        
+        /* Блок подсказки (теперь темный и строгий) */
+        .value-hint { 
+            background: rgba(255,255,255,0.02); 
+            color: #aaa; 
+            padding: 16px; 
+            border-radius: 12px; 
+            font-size: 0.9rem; 
+            margin-top: auto; 
+            font-weight: 300; 
+            text-align: center; 
+            border: 1px solid rgba(255,255,255,0.05); 
+            line-height: 1.5;
+        }
+
+        .best-for {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .pricing-card { min-width: 85vw; padding: 40px 30px; }
+        }
         .price-retainer { font-size: 3rem; font-weight: 400; margin: 20px 0; color: #fff; letter-spacing: -1.5px; }
         .price-retainer span { font-size: 1.1rem; color: var(--text-muted); letter-spacing: 0; }
         .price-setup { font-size: 1rem; color: #666; margin-bottom: 25px; }
@@ -1239,66 +1338,90 @@
 
         <div class="carousel-container reveal" id="pricingCarousel">
             
+            <!-- Tier 1 -->
             <div class="pricing-card">
-                <span style="color:#666; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Starter</span>
-                <p style="color:#888; font-size:0.95rem; margin:15px 0;">For small businesses who want to stop losing clients in chats</p>
-                <div class="price-retainer">$300<span>/mo</span></div>
-                <div class="price-setup">Setup from $1,000</div>
+                <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Local Business</span>
+                <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Never miss a lead again — even after hours</p>
+                <div class="price-retainer">$300<span> /mo</span></div>
+                <div class="price-setup">
+                    Setup: from $500<br>
+                    <span style="font-size: 0.8rem; color: #666;">Most clients: $300–$500</span>
+                </div>
                 <ul class="features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Replies to every lead instantly</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Simple booking logic</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> All leads in one place</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> No more missed messages</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Reply to every message in under 60s</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Capture leads from website & social</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Basic booking automation (calendar)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Works 24/7 without staff</li>
                 </ul>
-                <div class="value-hint">💡 Even +3 extra clients/month covers the cost</div>
-                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:25px;">Book Free Audit</button>
+                <div class="value-hint">Simple system. Fast setup. Immediate impact.<br><span style="color:#666; font-size:0.8rem;">No long-term contracts • Cancel anytime</span></div>
+                <div class="best-for">👉 Best for: local services & small teams</div>
+                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:20px; width: 100%;">Get Free AI Audit</button>
             </div>
 
-            <div class="pricing-card popular" id="growth-plan">
+            <!-- Tier 2 -->
+            <div class="pricing-card popular">
                 <div class="popular-badge">Most Popular</div>
-                <span style="color:#4a9eff; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Growth</span>
-                <p style="color:#888; font-size:0.95rem; margin:15px 0;">For businesses that want more bookings from existing leads</p>
-                <div class="price-retainer">$1,000<span>/mo</span></div>
-                <div class="price-setup">Setup from $4,000</div>
+                <span style="color:#fff; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Growth System</span>
+                <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Turn existing leads into booked clients — automatically</p>
+                <div class="price-retainer">$1,000<span> /mo</span></div>
+                <div class="price-setup">
+                    Setup: from $2,000<br>
+                    <span style="font-size: 0.8rem; color: #666;">Most clients: $1,000–$1,500</span>
+                </div>
                 <ul class="features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Everything in Starter</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Follow-ups for lost clients</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Instagram, WhatsApp, Website</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Tracks where you lose money</li>
-                </ul>
-                <div class="value-hint">💡 Most clients see +20–40% more bookings</div>
-                <button onclick="openModal()" class="btn btn-primary" style="margin-top:25px;">Get Started</button>
-            </div>
-
-            <div class="pricing-card">
-                <span style="color:#666; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Enterprise</span>
-                <p style="color:#888; font-size:0.95rem; margin:15px 0;">For companies that want full control over revenue flow</p>
-                <div class="price-retainer">$4,000<span>/mo</span></div>
-                <div class="price-setup">Setup from $15,000</div>
-                <ul class="features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced automation systems</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom logic & integrations</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Revenue tracking & analytics</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Instant replies (WhatsApp, IG, Email)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Automatic appointment booking (24/7)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Reactivate old leads into new revenue</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-channel lead capture system</li>
                     <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Continuous optimization</li>
                 </ul>
-                <div class="value-hint">💡 Built for scaling teams, not just saving time</div>
-                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:25px;">Get a Quote</button>
+                <div class="value-hint" style="color:#fff; border-color: rgba(255,255,255,0.15);">We don’t just build — we grow your results.<br><span style="color:#888; font-size:0.8rem;">No long-term contracts • ROI-focused</span></div>
+                <div class="best-for">👉 Best for: businesses with steady lead flow</div>
+                <button onclick="openModal()" class="btn btn-primary" style="margin-top:20px; width: 100%;">Get Free AI Audit</button>
             </div>
 
+            <!-- Tier 3 -->
             <div class="pricing-card">
-                <span style="color:#666; font-size:0.85rem; text-transform:uppercase; letter-spacing:1px;">Custom</span>
-                <p style="color:#888; font-size:0.95rem; margin:15px 0;">Predictive AI and bespoke ML solutions</p>
-                <div class="price-retainer">Custom</div>
-                <div class="price-setup">Value-Based Pricing</div>
+                <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">AI Revenue Engine</span>
+                <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Build a complete AI-driven client acquisition system</p>
+                <div class="price-retainer">$2,000<span> /mo</span></div>
+                <div class="price-setup">
+                    Setup: from $5,000<br>
+                    <span style="font-size: 0.8rem; color: #666;">Most clients: $2,000–$3,000</span>
+                </div>
                 <ul class="features">
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom Machine Learning models</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> SOC2 / ISO compliance development</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Full software ecosystem dev</li>
-                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated support & SLAs</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> AI agents that qualify & follow up</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Automated outreach (Email + LinkedIn)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Smart lead scoring & pipeline mgmt</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> CRM + tools fully integrated</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Advanced automation workflows</li>
                 </ul>
-                <div class="value-hint">💡 Strategic engineering for market leaders</div>
-                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:25px;">Consult Strategy</button>
+                <div class="value-hint">Built to scale your revenue — not just save time.</div>
+                <div class="best-for">👉 Best for: scaling companies & agencies</div>
+                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:20px; width: 100%;">Book Strategy Call</button>
             </div>
+
+            <!-- Tier 4 -->
+            <div class="pricing-card">
+                <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Custom Enterprise</span>
+                <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Full automation infrastructure tailored to your business</p>
+                <div class="price-retainer" style="font-size: 2.2rem; margin-top: 24px;">Custom</div>
+                <div class="price-setup">
+                    Setup: Value-Based<br>
+                    <span style="font-size: 0.8rem; color: #666;">Custom monthly retainer</span>
+                </div>
+                <ul class="features">
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Multi-agent AI (sales, support, ops)</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Custom workflows & API integrations</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> GDPR-safe / EU-hosted solutions</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Internal process automation</li>
+                    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg> Dedicated support & scaling roadmap</li>
+                </ul>
+                <div class="value-hint">Long-term partnership. Built for scale.</div>
+                <div class="best-for">👉 Best for: complex ops & larger teams</div>
+                <button onclick="openModal()" class="btn btn-secondary" style="margin-top:20px; width: 100%;">Request Custom Plan</button>
+            </div>
+
         </div>
     </section>
 
