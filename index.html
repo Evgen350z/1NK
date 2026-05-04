@@ -107,38 +107,74 @@
         .comp-card.good li { color: #ccc; }
         .comp-card.good li span { color: #4caf50; }
 
-        /* ARCHITECTURE */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; padding: 50px; backdrop-filter: blur(20px); transition: 0.4s ease; }
-        .card:hover { border-color: rgba(255,255,255,0.3); transform: translateY(-6px); }
-        .card h3 { font-size: 1.4rem; margin: 0 0 15px 0; font-weight: 500; color: #fff; letter-spacing: 0.5px; }
-        .card p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin: 0; font-weight: 300; }
-
-        /* НОВЫЕ ИКОНКИ ДЛЯ КАРТОЧЕК ARCHITECTURE */
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
+        /* ANIMATED GRAPHICS CONTAINERS (XTRACT STYLE) */
+        .card-graphic {
+            height: 170px;
+            background: #060606;
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 12px;
+            margin-bottom: 25px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-blue);
-            margin-bottom: 24px;
-            transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: inset 0 4px 20px rgba(0,0,0,0.5);
         }
-        .card:hover .card-icon {
-            background: rgba(74, 158, 255, 0.08);
-            border-color: rgba(74, 158, 255, 0.3);
-            transform: scale(1.05) translateY(-2px);
-            box-shadow: 0 5px 15px rgba(74, 158, 255, 0.15);
+        .card-graphic::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(74, 158, 255, 0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
-        .card-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke-width: 1.5;
-        }
+
+        /* 1. Radar Animation */
+        .radar-box { width: 100px; height: 100px; border: 1px solid rgba(74, 158, 255, 0.2); border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center; }
+        .radar-box::after { content: ''; width: 50px; height: 50px; border: 1px solid rgba(74, 158, 255, 0.1); border-radius: 50%; position: absolute; }
+        .radar-sweep { position: absolute; top: 0; left: 50px; width: 50px; height: 50px; background: conic-gradient(from 0deg, transparent, rgba(74, 158, 255, 0.4)); transform-origin: 0% 100%; animation: sweep 2.5s linear infinite; }
+        @keyframes sweep { to { transform: rotate(360deg); } }
+
+        /* 2. Pipeline Flow */
+        .flow-container { display: flex; align-items: center; gap: 12px; }
+        .flow-node { width: 36px; height: 36px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .flow-line { width: 40px; height: 2px; background: rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+        .flow-dot { position: absolute; top: 0; left: 0; width: 15px; height: 2px; background: var(--accent-blue); box-shadow: 0 0 10px var(--accent-blue); animation: flowMove 1.5s ease-in-out infinite; }
+        .flow-container .flow-line:nth-child(4) .flow-dot { animation-delay: 0.75s; }
+        @keyframes flowMove { 0% { left: -15px; } 100% { left: 40px; } }
+
+        /* 3. Code Editor */
+        .code-window { width: 85%; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 0.75rem; color: #888; text-align: left; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .code-header { display: flex; gap: 5px; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+        .code-dot { width: 8px; height: 8px; border-radius: 50%; background: #333; }
+        .code-line { margin-bottom: 6px; }
+        .c-purple { color: #c678dd; } .c-blue { color: #61afef; } .c-green { color: #98c379; }
+        .code-cursor { display: inline-block; width: 6px; height: 12px; background: #fff; animation: blink 1s step-end infinite; vertical-align: middle; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* 4. Sonar Ping */
+        .sonar-wrapper { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+        .sonar-core { width: 16px; height: 16px; background: var(--accent-blue); border-radius: 50%; box-shadow: 0 0 15px var(--accent-blue); z-index: 2; }
+        .sonar-wave { position: absolute; border: 1px solid var(--accent-blue); border-radius: 50%; animation: sonar 2s ease-out infinite; opacity: 0; top: 0; left: 0; right: 0; bottom: 0; }
+        .sonar-wave:nth-child(2) { animation-delay: 0.6s; }
+        @keyframes sonar { 0% { transform: scale(0.2); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+        /* 5. Integration Sync */
+        .sync-wrapper { display: flex; align-items: center; gap: 20px; }
+        .sync-box { width: 50px; height: 50px; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
+        .sync-arrows { display: flex; flex-direction: column; gap: 8px; }
+        .sync-arrow { width: 40px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-blue), transparent); animation: syncPulse 1.5s infinite; opacity: 0.3; }
+        .sync-arrow:nth-child(2) { animation-delay: 0.75s; background: linear-gradient(90deg, transparent, #c678dd, transparent); }
+        @keyframes syncPulse { 0%, 100% { opacity: 0.2; transform: scaleX(0.8); } 50% { opacity: 1; transform: scaleX(1.1); } }
+
+        /* 6. Predictive Chart */
+        .chart-wrapper { display: flex; align-items: flex-end; gap: 10px; height: 70px; }
+        .chart-bar { width: 16px; background: rgba(255,255,255,0.05); border-radius: 4px 4px 0 0; position: relative; overflow: hidden; }
+        .chart-fill { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.2); animation: barGrow 3s ease-out infinite alternate; transform-origin: bottom; }
+        .chart-bar:nth-child(1) .chart-fill { height: 40%; animation-delay: 0s; }
+        .chart-bar:nth-child(2) .chart-fill { height: 60%; animation-delay: 0.5s; background: rgba(74, 158, 255, 0.6); }
+        .chart-bar:nth-child(3) .chart-fill { height: 30%; animation-delay: 1s; }
+        .chart-bar:nth-child(4) .chart-fill { height: 80%; animation-delay: 1.5s; background: rgba(198, 120, 221, 0.6); }
+        .chart-bar:nth-child(5) .chart-fill { height: 100%; animation-delay: 2s; background: #4caf50; box-shadow: 0 -5px 15px rgba(76, 175, 80, 0.3); }
+        @keyframes barGrow { 0% { transform: scaleY(0.7); } 100% { transform: scaleY(1.1); } }
         /* TESTIMONIALS (С АВАТАРКОЙ) */
         .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
         .testi-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px 80px; max-width: 900px; width: 100%; text-align: center; position: relative; margin: 0 auto; }
@@ -383,60 +419,91 @@
         </div>
     </section>
 
-    <!-- 4. ARCHITECTURE (С ПРЕМИАЛЬНЫМИ ИКОНКАМИ) -->
+    <!-- 4. ARCHITECTURE (С АНИМИРОВАННЫМИ ВИДЖЕТАМИ) -->
     <section id="capabilities">
         <h2 class="section-title reveal">Simple. Efficient. Scalable.</h2>
         <div class="grid">
             
             <div class="card reveal delay-1">
-                <div class="card-icon">
-                    <!-- Иконка Data / Database -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                <div class="card-graphic">
+                    <div class="radar-box">
+                        <div class="radar-sweep"></div>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+                    </div>
                 </div>
                 <h3>Data Ecosystems</h3>
                 <p>All your leads in one place. No more switching apps, no more chaos. One unified source of truth.</p>
             </div>
             
             <div class="card reveal delay-2">
-                <div class="card-icon">
-                    <!-- Иконка Pipelines / Workflow -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="16" y="16" width="6" height="6" rx="1"></rect><rect x="2" y="16" width="6" height="6" rx="1"></rect><rect x="9" y="2" width="6" height="6" rx="1"></rect><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"></path><path d="M12 12V8"></path></svg>
+                <div class="card-graphic">
+                    <div class="flow-container">
+                        <div class="flow-node"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg></div>
+                        <div class="flow-line"><div class="flow-dot"></div></div>
+                        <div class="flow-node"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+                        <div class="flow-line"><div class="flow-dot"></div></div>
+                        <div class="flow-node"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg></div>
+                    </div>
                 </div>
                 <h3>Autonomous Pipelines</h3>
                 <p>Every message gets a reply. Every lead is tracked. Automatically from first click to final booking.</p>
             </div>
             
             <div class="card reveal delay-3">
-                <div class="card-icon">
-                    <!-- Иконка Cognitive Logic / AI Brain -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                <div class="card-graphic">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <div class="code-dot" style="background:#ff5f56;"></div>
+                            <div class="code-dot" style="background:#ffbd2e;"></div>
+                            <div class="code-dot" style="background:#27c93f;"></div>
+                        </div>
+                        <div class="code-line"><span class="c-purple">const</span> <span class="c-blue">ai_logic</span> = <span class="c-purple">new</span> 1NK_Core();</div>
+                        <div class="code-line"><span class="c-blue">ai_logic</span>.on(<span class="c-green">'lead_msg'</span>, (data) => {</div>
+                        <div class="code-line">&nbsp;&nbsp;qualify(data);</div>
+                        <div class="code-line">&nbsp;&nbsp;bookMeeting()<span class="code-cursor"></span></div>
+                        <div class="code-line">});</div>
+                    </div>
                 </div>
                 <h3>Cognitive Logic</h3>
                 <p>The system qualifies, responds, and guides clients through the funnel — without you lifting a finger.</p>
             </div>
 
             <div class="card reveal delay-4">
-                <div class="card-icon">
-                    <!-- Иконка Speed / Zap -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                <div class="card-graphic">
+                    <div class="sonar-wrapper">
+                        <div class="sonar-wave"></div>
+                        <div class="sonar-wave"></div>
+                        <div class="sonar-core"></div>
+                    </div>
                 </div>
                 <h3>Zero Latency Response</h3>
                 <p>Speed is your ultimate edge. Our systems engage leads in under 10 seconds, capturing interest long before your competitors even see the notification.</p>
             </div>
             
             <div class="card reveal delay-5">
-                <div class="card-icon">
-                    <!-- Иконка Connectivity / Link -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                <div class="card-graphic">
+                    <div class="sync-wrapper">
+                        <div class="sync-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>
+                        <div class="sync-arrows">
+                            <div class="sync-arrow"></div>
+                            <div class="sync-arrow"></div>
+                        </div>
+                        <div class="sync-box"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4a9eff" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path></svg></div>
+                    </div>
                 </div>
                 <h3>Seamless Connectivity</h3>
                 <p>We engineer invisible bridges between your CRM and marketing tools, allowing data to flow perfectly without disrupting your established operations.</p>
             </div>
             
             <div class="card reveal delay-6">
-                <div class="card-icon">
-                    <!-- Иконка Predictive Performance / Chart -->
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                <div class="card-graphic">
+                    <div class="chart-wrapper">
+                        <div class="chart-bar"><div class="chart-fill"></div></div>
+                        <div class="chart-bar"><div class="chart-fill"></div></div>
+                        <div class="chart-bar"><div class="chart-fill"></div></div>
+                        <div class="chart-bar"><div class="chart-fill"></div></div>
+                        <div class="chart-bar"><div class="chart-fill" style="height: 100%;"></div></div>
+                    </div>
                 </div>
                 <h3>Predictive Performance</h3>
                 <p>Stop guessing. The infrastructure tracks every conversation pattern, giving you a clear, data-backed map of how to scale your revenue to the next level.</p>
