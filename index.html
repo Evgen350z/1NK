@@ -570,115 +570,82 @@
         }
 
         /* ======================================================= */
-        /* --- FOUNDER NOTE SECTION --- */
+        /* --- MINIMALIST QUOTE (LANDIO STYLE) --- */
         /* ======================================================= */
         
-        .founder-section {
-            padding: 80px 25px;
-            max-width: 1000px;
+        .minimal-quote-section {
+            padding: 120px 20px;
+            max-width: 900px;
             margin: 0 auto;
-            position: relative;
-        }
-
-        .founder-card {
-            background: linear-gradient(145deg, rgba(10,10,10,0.8) 0%, rgba(5,5,5,0.9) 100%);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 24px;
-            padding: 60px;
+            text-align: center;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 50px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
-            position: relative;
-            overflow: hidden;
         }
 
-        /* Декоративный блик на фоне */
-        .founder-card::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(74, 158, 255, 0.05) 0%, transparent 60%);
-            pointer-events: none;
+        .mq-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #aaa;
+            margin-bottom: 40px;
         }
 
-        .founder-photo {
-            flex-shrink: 0;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.1);
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            filter: grayscale(20%);
-            transition: 0.4s ease;
-        }
-        
-        .founder-photo:hover {
-            filter: grayscale(0%);
-            border-color: rgba(74, 158, 255, 0.4);
-            transform: scale(1.02);
-        }
-
-        .founder-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .founder-quote-icon {
-            color: rgba(74, 158, 255, 0.2);
-            font-size: 4rem;
-            line-height: 1;
-            position: absolute;
-            top: -30px;
-            left: -20px;
-            z-index: -1;
-            font-family: Georgia, serif;
-        }
-
-        .founder-text {
-            font-size: 1.25rem;
-            color: #ccc;
-            line-height: 1.6;
-            font-weight: 300;
-            margin-bottom: 25px;
-            font-style: italic;
-        }
-
-        .founder-name {
-            font-size: 1.4rem;
+        .mq-badge svg {
+            width: 14px;
+            height: 14px;
             color: #fff;
-            font-weight: 500;
-            margin: 0 0 5px 0;
+        }
+
+        .mq-text {
+            font-size: clamp(1.8rem, 4vw, 2.6rem); /* Идеально скейлится на телефонах и ПК */
+            color: #888;
+            line-height: 1.4;
+            font-weight: 300;
+            margin: 0 0 50px 0;
             letter-spacing: -0.5px;
         }
 
-        .founder-title {
-            font-size: 0.95rem;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
+        /* Тот самый красивый шрифт для выделенных слов */
+        .mq-text .highlight {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-style: italic;
+            color: #fff;
         }
 
-        @media (max-width: 768px) {
-            .founder-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 40px 25px;
-                gap: 30px;
-            }
-            .founder-photo {
-                width: 150px;
-                height: 150px;
-            }
-            .founder-quote-icon {
-                left: 50%;
-                transform: translateX(-50%);
-            }
+        .mq-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
         }
-    </style>
+
+        .mq-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mq-role {
+            font-size: 1.05rem;
+            color: #aaa;
+            font-weight: 300;
+        }
+        
+        .mq-role span {
+            color: #fff;
+            font-weight: 500;
+        }
 </head>
 <body>
 
@@ -721,23 +688,24 @@
         </div>
     </section>
 
-    <!-- FOUNDER NOTE -->
-    <section class="founder-section reveal delay-1">
-        <div class="founder-card">
-            <!-- ЗДЕСЬ БУДЕТ ТВОЕ ФОТО. ЗАМЕНИ ССЫЛКУ В SRC НА СВОЮ -->
-            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=400&q=80" alt="Evgeniy Sinenkow" class="founder-photo">
-            
-            <div class="founder-content">
-                <div class="founder-quote-icon">"</div>
-                <p class="founder-text">
-                    For years, I've watched brilliant companies bleed revenue simply because they couldn't respond to leads fast enough. We engineered 1NK to solve exactly this. Based on German engineering principles of absolute precision, we didn't build just another chatbot — we built a cognitive revenue infrastructure. Our goal isn't to save you time; it's to capture every dollar you've already earned.
-                </p>
-                <div class="founder-info">
-                    <h4 class="founder-name">Evgeniy Sinenkow</h4>
-                    <p class="founder-title">CEO & Lead Developer, 1NK</p>
-                </div>
-            </div>
+    <!-- MINIMALIST QUOTE SECTION -->
+    <section class="minimal-quote-section reveal delay-1">
+        
+        <div class="mq-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            WE ANALYZE YOUR DATA
         </div>
+        
+        <p class="mq-text">
+            We find what to <span class="highlight">automate</span>, who your users are & how AI can optimize your <span class="highlight">workflow</span>. Best part is we also build and launch <span class="highlight">real solutions.</span>"
+        </p>
+        
+        <div class="mq-author">
+            <!-- ЗАМЕНИ ССЫЛКУ SRC НА СВОЕ ФОТО -->
+            <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=100&q=80" alt="Evgeniy Sinenkow" class="mq-avatar">
+            <span class="mq-role"><span>Evgeniy Sinenkow</span> &nbsp;—&nbsp; CEO & Lead Developer</span>
+        </div>
+
     </section>
 
     <!-- 2. OUTCOMES (6 ИКОНОК С КАСКАДНОЙ АНИМАЦИЕЙ) -->
