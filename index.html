@@ -34,15 +34,14 @@
         .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover { color: #fff; }
         
-        .lang-dropdown { position: relative; }
-        .lang-btn { background: transparent; color: var(--text-muted); border: none; font-size: 0.95rem; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit; }
-        .lang-content { display: none; position: absolute; right: 0; top: 100%; margin-top: 15px; background: #0a0a0a; min-width: 130px; border: 1px solid var(--border-color); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .lang-content a { color: var(--text-muted); padding: 12px 18px; text-decoration: none; display: block; transition: 0.2s; }
-        .lang-content a:hover { background: rgba(255,255,255,0.05); color: #fff; }
-        .lang-dropdown:hover .lang-content { display: block; }
+        .lang-dropdown { display: flex; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 4px; }
+        .lang-dropdown a { color: #888; text-decoration: none; font-size: 0.85rem; padding: 6px 14px; border-radius: 16px; transition: 0.3s ease; font-weight: 500; }
+        .lang-dropdown a:hover { color: #fff; }
+        .lang-dropdown a.active { background: rgba(255,255,255,0.1); color: #fff; }
 
         /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
-        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; overflow: hidden; background: #000; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
+        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; overflow: hidden; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .hero-content { position: relative; z-index: 2; width: 100%; }
         
         /* Холст для засасывающихся звезд */
