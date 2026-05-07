@@ -41,14 +41,14 @@
 
         /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
         /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
-        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; overflow: hidden; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.03); }
+        .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .hero-content { position: relative; z-index: 2; width: 100%; }
         
         /* Холст для засасывающихся звезд */
-        #heroCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        #heroCanvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
 
         /* Вращающееся глубокое свечение в центре */
-        .hero-glow-wrapper { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90vw; max-width: 1000px; height: 90vw; max-height: 1000px; z-index: 1; pointer-events: none; animation: spinGlow 40s linear infinite; }
+        .hero-glow-wrapper { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90vw; max-width: 1000px; height: 90vw; max-height: 1000px; z-index: 1; pointer-events: none; animation: spinGlow 40s linear infinite; }
         .hero-glow-1 { position: absolute; top: 15%; left: 15%; right: 15%; bottom: 15%; border-radius: 50%; background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(74, 158, 255, 0.15) 140deg, transparent 180deg, rgba(74, 158, 255, 0.15) 320deg, transparent 360deg); filter: blur(70px); }
         .hero-glow-2 { position: absolute; top: 30%; left: 30%; right: 30%; bottom: 30%; border-radius: 50%; background: radial-gradient(circle, rgba(20, 80, 255, 0.15) 0%, transparent 70%); filter: blur(40px); }
         
@@ -1653,9 +1653,8 @@
         let particles = [];
 
         function initVortex() {
-            const hero = document.querySelector('.hero');
-            canvas.width = hero.offsetWidth;
-            canvas.height = hero.offsetHeight;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             particles = [];
             for (let i = 0; i < 180; i++) {
                 particles.push(createParticle(true));
