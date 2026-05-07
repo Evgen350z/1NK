@@ -40,7 +40,6 @@
         .lang-dropdown a.active { background: rgba(255,255,255,0.1); color: #fff; }
 
         /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
-        /* HERO СЕКЦИЯ (XTRACT ЭФФЕКТ) */
         .hero { position: relative; display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 100vh; justify-content: center; padding: 60px 20px 100px; background: transparent; border-bottom: 1px solid rgba(255,255,255,0.03); }
         .hero-content { position: relative; z-index: 2; width: 100%; }
         
@@ -217,11 +216,12 @@
         .chart-bar:nth-child(7) .chart-fill { height: 100%; animation-delay: 1.8s; background: #4caf50; box-shadow: 0 -10px 25px rgba(76, 175, 80, 0.3); }
         @keyframes barGrow { 0% { transform: scaleY(0.85); } 100% { transform: scaleY(1.05); } }
 
-        /* Мобильная адаптация */
+        /* Мобильная адаптация BENTO */
         @media (max-width: 900px) {
             .bento-grid { grid-template-columns: 1fr; }
             .bento-card:nth-child(n) { grid-column: span 1; }
         }
+
         /* TESTIMONIALS (С АВАТАРКОЙ) */
         .testimonials-wrapper { display: flex; justify-content: center; width: 100%; margin-top: 10px; }
         .testi-card { background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); border-radius: 24px; padding: 60px 80px; max-width: 900px; width: 100%; text-align: center; position: relative; margin: 0 auto; }
@@ -348,16 +348,7 @@
             .pricing-header { flex-direction: column; align-items: flex-start; gap: 20px; }
             .pricing-card { min-width: 85vw; padding: 40px 30px; }
         }
-        .price-retainer { font-size: 3rem; font-weight: 400; margin: 20px 0; color: #fff; letter-spacing: -1.5px; }
-        .price-retainer span { font-size: 1.1rem; color: var(--text-muted); letter-spacing: 0; }
-        .price-setup { font-size: 1rem; color: #666; margin-bottom: 25px; }
         
-        ul.features { list-style: none; padding: 0; margin: 0 0 35px 0; flex-grow: 1; }
-        ul.features li { display: flex; align-items: flex-start; gap: 14px; padding: 10px 0; font-size: 1.05rem; color: #ccc; font-weight: 300; }
-        ul.features svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--accent-blue); margin-top: 4px; opacity: 0.8; }
-        
-        .value-hint { background: rgba(74, 158, 255, 0.1); color: var(--accent-blue); padding: 16px; border-radius: 12px; font-size: 0.95rem; margin-top: auto; font-weight: 500; text-align: center; border: 1px solid rgba(74, 158, 255, 0.15); }
-
         /* WHO THIS IS FOR */
         .for-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; margin-top: 30px; }
         .for-list { list-style: none; padding: 0; }
@@ -367,7 +358,7 @@
         .for-list.no li { color: #666; }
         .for-list.no span { color: #f44336; font-size: 1.6rem; font-weight: 600; }
 
-        /* FAQ В СТИЛЕ CARDS (ИСПРАВЛЕННЫЙ КОНФЛИКТ КЛАССОВ) */
+        /* FAQ В СТИЛЕ CARDS */
         .faq-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
         
         .faq-item { 
@@ -441,7 +432,6 @@
             .for-grid { grid-template-columns: 1fr; gap: 40px; }
             .features-grid { grid-template-columns: 1fr; gap: 50px; }
             .comparison-grid { grid-template-columns: 1fr; }
-            .pricing-card { min-width: 88vw; }
             .testi-card { padding: 60px 25px; }
             .testi-text { font-size: 1.4rem; }
             .nav-btn-testi.prev { left: 10px; } .nav-btn-testi.next { right: 10px; }
@@ -774,10 +764,8 @@
 </head>
 <body>
 
-    <!-- ГЛОБАЛЬНЫЙ АНИМИРОВАННЫЙ ФОН -->
     <div class="global-glow-bg"></div>
 
-    <!-- НАВИГАЦИЯ -->
     <nav class="reveal delay-1 active">
         <a href="#" class="logo">1NK</a>
         
@@ -792,16 +780,14 @@
         <div style="display: flex; align-items: center; gap: 20px;">
             <div class="lang-dropdown">
                 <a href="index.html" class="active">EN</a>
-                <a href="Test.html">DE</a>
+                <a href="de.html">DE</a>
             </div>
             
             <button onclick="openModal()" class="btn btn-secondary" style="padding: 12px 25px; font-size: 0.85rem;">Book Free Audit</button>
         </div>
     </nav>
 
-    <!-- 1. HERO (ЭФФЕКТ ЗАСАСЫВАЮЩИХСЯ ЧАСТИЦ XTRACT) -->
     <section class="hero">
-        <!-- Скриптовый Canvas и CSS Вортекс -->
         <canvas id="heroCanvas"></canvas>
         <div class="hero-glow-wrapper">
             <div class="hero-glow-1"></div>
@@ -819,52 +805,40 @@
         </div>
     </section>
 
-    <!-- БЛОК ИНТЕГРАЦИЙ (WORKS WITH + LOGOS) -->
     <div class="integrations-wrapper">
         <div class="integrations-label reveal">Works seamlessly with your existing stack</div>
         
         <div class="marquee-container reveal delay-2">
-            <!-- Трек 1 -->
             <div class="marquee-track">
-                <!-- HubSpot -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6"/></svg> HubSpot
                 </div>
-                <!-- Salesforce -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17.5 19C19.9853 19 22 16.9853 22 14.5C22 12.1325 20.1786 10.1947 17.8596 10.0268C17.3753 7.18274 14.9082 5 12 5C9.44497 5 7.2798 6.6433 6.33156 8.9221C3.8967 9.14175 2 11.1685 2 13.5C2 16.0378 4.10842 18.1182 6.67139 18.423"></path></svg> Salesforce
                 </div>
-                <!-- Google Sheets -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/><line x1="15" y1="9" x2="15" y2="21"/></svg> Google Sheets
                 </div>
-                <!-- Slack -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg> Slack
                 </div>
-                <!-- Notion -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v16H4z"/><path d="M9 8v8l6-5V8z"/></svg> Notion
                 </div>
-                <!-- Calendly -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="2"/></svg> Calendly
                 </div>
-                <!-- Stripe -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 11.5c-3.14-.14-6-.68-6-.68a30.82 30.82 0 0 1-5-1.5A3.28 3.28 0 0 1 3 6.13 3.69 3.69 0 0 1 6.57 3h.86A30.82 30.82 0 0 1 12.43 4.5a3.28 3.28 0 0 1 1.77 3.2A3.69 3.69 0 0 1 10.63 11z"/><path d="M13.37 12.5c3.14.14 6 .68 6 .68a30.82 30.82 0 0 1 5 1.5A3.28 3.28 0 0 1 21 17.87 3.69 3.69 0 0 1 17.43 21h-.86a30.82 30.82 0 0 1-5-1.5 3.28 3.28 0 0 1-1.77-3.2 3.69 3.69 0 0 1 3.57-3.8z"/></svg> Stripe
                 </div>
-                <!-- Gmail -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Gmail
                 </div>
-                <!-- WhatsApp -->
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg> WhatsApp
                 </div>
             </div>
 
-            <!-- Трек 2 (Дубликат для бесшовного зацикливания) -->
             <div class="marquee-track">
                 <div class="integration-pill">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6"/></svg> HubSpot
@@ -897,7 +871,6 @@
         </div>
     </div>
 
-    <!-- MINIMALIST QUOTE SECTION -->
     <section class="minimal-quote-section reveal delay-1">
         
         <div class="mq-badge">
@@ -910,12 +883,10 @@
         </p>
         
         <div class="mq-author">
-            <!-- ВСТАВЬ НАЗВАНИЕ СВОЕГО ФОТО ИЛИ ССЫЛКУ В src="" НИЖЕ -->
             <img src="IMG_7504.jpeg" alt="Eugen Sinenkow" class="mq-avatar">
             
             <span class="mq-role">
                 <a href="https://www.linkedin.com/in/eugen-sinenkow-547a773b1?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" style="color: #fff; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; transition: color 0.3s;" onmouseover="this.style.color='var(--accent-blue)'" onmouseout="this.style.color='#fff'">
-                    <!-- Иконка LinkedIn -->
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     Eugen Sinenkow
                 </a> 
@@ -925,7 +896,6 @@
 
     </section>
 
-    <!-- 2. OUTCOMES (6 ИКОНОК С КАСКАДНОЙ АНИМАЦИЕЙ) -->
     <section id="outcomes">
         <h2 class="section-title reveal">Built to capture every dollar.</h2>
         <div class="features-grid">
@@ -974,8 +944,7 @@
         </div>
     </section>
 
- <!-- 3. THE REALITY -->
-    <section>
+ <section>
         <h2 class="section-title reveal">You’re not lacking leads.<br>You’re leaking them.</h2>
         <div class="comparison-grid">
             <div class="comp-card reveal delay-1">
@@ -999,13 +968,11 @@
         </div>
     </section>
 
-    <!-- 4. ARCHITECTURE (BENTO GRID STYLE) -->
     <section id="capabilities">
         <h2 class="section-title reveal">Simple. Efficient. Scalable.</h2>
         
         <div class="bento-grid">
             
-            <!-- Карточка 1 (Узкая) -->
             <div class="bento-card reveal delay-1">
                 <div class="bento-graphic">
                     <div class="radar-box">
@@ -1019,7 +986,6 @@
                 </div>
             </div>
             
-            <!-- Карточка 2 (Широкая) -->
             <div class="bento-card reveal delay-2">
                 <div class="bento-graphic">
                     <div class="flow-container">
@@ -1036,7 +1002,6 @@
                 </div>
             </div>
             
-            <!-- Карточка 3 -->
             <div class="bento-card reveal delay-3">
                 <div class="bento-graphic">
                     <div class="code-window">
@@ -1058,7 +1023,6 @@
                 </div>
             </div>
 
-            <!-- Карточка 4 -->
             <div class="bento-card reveal delay-4">
                 <div class="bento-graphic">
                     <div class="sonar-wrapper">
@@ -1073,7 +1037,6 @@
                 </div>
             </div>
             
-            <!-- Карточка 5 -->
             <div class="bento-card reveal delay-5">
                 <div class="bento-graphic">
                     <div class="sync-wrapper">
@@ -1091,7 +1054,6 @@
                 </div>
             </div>
             
-            <!-- Карточка 6 (ОГРОМНАЯ, на всю ширину) -->
             <div class="bento-card reveal delay-6">
                 <div class="bento-graphic">
                     <div class="chart-wrapper">
@@ -1113,11 +1075,9 @@
         </div>
     </section>
 
-    <!-- 4.5 PROOF OF WORK (УЛЬТРА-КЕЙС + КАРУСЕЛЬ) -->
     <section class="cases-section">
         <h2 class="section-title reveal">The proof is in the revenue.</h2>
         
-        <!-- УЛЬТРА КЕЙС -->
         <div class="ultra-case reveal delay-1">
             <div class="uc-content">
                 <div class="uc-header">
@@ -1184,11 +1144,9 @@
             </div>
         </div>
 
-        <!-- КАРУСЕЛЬ МИНИ-КЕЙСОВ -->
         <div class="cases-slider-wrapper reveal delay-2">
             <div class="cases-carousel" id="casesCarousel">
                 
-                <!-- 1. Solar -->
                 <div class="slide-card">
                     <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=600&q=80" alt="Solar" class="slide-bg">
                     <div class="slide-content">
@@ -1214,7 +1172,6 @@
                     </div>
                 </div>
 
-                <!-- 2. Detailing -->
                 <div class="slide-card">
                     <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=600&q=80" alt="Car Detailing" class="slide-bg">
                     <div class="slide-content">
@@ -1240,7 +1197,6 @@
                     </div>
                 </div>
 
-                <!-- 3. Roofing -->
                 <div class="slide-card">
                     <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=600&q=80" alt="Roofing" class="slide-bg">
                     <div class="slide-content">
@@ -1266,7 +1222,6 @@
                     </div>
                 </div>
 
-                <!-- 4. Law Firm -->
                 <div class="slide-card">
                     <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=600&q=80" alt="Law Firm" class="slide-bg">
                     <div class="slide-content">
@@ -1292,7 +1247,6 @@
                     </div>
                 </div>
 
-                <!-- 5. Gym -->
                 <div class="slide-card">
                     <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=600&q=80" alt="Gym" class="slide-bg">
                     <div class="slide-content">
@@ -1319,7 +1273,6 @@
                 </div>
             </div>
             
-            <!-- Кнопки управления каруселью -->
             <div class="slider-controls">
                 <button class="nav-btn-testi" style="position:relative; left:0; transform:none;" onclick="document.getElementById('casesCarousel').scrollBy({left: -400, behavior: 'smooth'})">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -1331,7 +1284,6 @@
         </div>
     </section>
 
-    <!-- 5. ОТЗЫВЫ -->
     <section id="reviews" class="reveal">
         <h2 class="section-title" style="margin-bottom: 40px;">Don't take our word for it</h2>
         <div class="testimonials-wrapper">
@@ -1361,7 +1313,6 @@
         </div>
     </section>
 
-    <!-- 6. INVESTMENT (4 ТАРИФА) -->
     <section id="pricing">
         <div class="pricing-header reveal">
             <h2 class="section-title" style="margin: 0; text-align: left;">Stop losing clients.</h2>
@@ -1377,7 +1328,6 @@
 
         <div class="carousel-container reveal" id="pricingCarousel">
             
-            <!-- Tier 1 -->
             <div class="pricing-card">
                 <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Local Business</span>
                 <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Never miss a lead again — even after hours</p>
@@ -1397,7 +1347,6 @@
                 <button onclick="openModal()" class="btn btn-secondary" style="margin-top:20px; width: 100%;">Get Free AI Audit</button>
             </div>
 
-            <!-- Tier 2 -->
             <div class="pricing-card popular">
                 <div class="popular-badge">Most Popular</div>
                 <span style="color:#fff; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Growth System</span>
@@ -1419,7 +1368,6 @@
                 <button onclick="openModal()" class="btn btn-primary" style="margin-top:20px; width: 100%;">Get Free AI Audit</button>
             </div>
 
-            <!-- Tier 3 -->
             <div class="pricing-card">
                 <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">AI Revenue Engine</span>
                 <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Build a complete AI-driven client acquisition system</p>
@@ -1440,7 +1388,6 @@
                 <button onclick="openModal()" class="btn btn-secondary" style="margin-top:20px; width: 100%;">Book Strategy Call</button>
             </div>
 
-            <!-- Tier 4 -->
             <div class="pricing-card">
                 <span style="color:#888; font-size:0.85rem; text-transform:uppercase; letter-spacing:1.5px; font-weight:600;">Custom Enterprise</span>
                 <p style="color:#aaa; font-size:0.95rem; margin:15px 0 0;">Full automation infrastructure tailored to your business</p>
@@ -1464,7 +1411,6 @@
         </div>
     </section>
 
-    <!-- 7. WHO THIS IS FOR -->
     <section>
         <div class="for-grid">
             <div class="reveal delay-1">
@@ -1486,12 +1432,10 @@
         </div>
     </section>
 
-    <!-- 8. ОБНОВЛЕННЫЙ FAQ (КАРТОЧКИ СО ВСЕМИ ВОПРОСАМИ) -->
     <section id="faq">
         <h2 class="section-title reveal">Common Questions</h2>
         <div class="faq-container">
 
-            <!-- 1 -->
             <div class="faq-item reveal delay-1">
                 <button class="faq-question">
                     Is this just automation?
@@ -1500,7 +1444,6 @@
                 <div class="faq-answer">No. Automation is just the tool. We focus on one thing — getting you more booked clients from the leads you already have. We design the logic that actually closes deals.</div>
             </div>
 
-            <!-- 2 -->
             <div class="faq-item reveal delay-2">
                 <button class="faq-question">
                     How fast will I see results?
@@ -1509,7 +1452,6 @@
                 <div class="faq-answer">Most clients see improvement within the first 1–2 weeks after launch. Once the system starts catching missed messages, the ROI is immediate.</div>
             </div>
 
-            <!-- 3 -->
             <div class="faq-item reveal delay-3">
                 <button class="faq-question">
                     How long does implementation take?
@@ -1518,7 +1460,6 @@
                 <div class="faq-answer">Most systems are deployed within 2–6 weeks. We build the architecture, test it under load, and hand over a finished, stable product.</div>
             </div>
 
-            <!-- 4 -->
             <div class="faq-item reveal delay-4">
                 <button class="faq-question">
                     What kind of results can we expect?
@@ -1527,7 +1468,6 @@
                 <div class="faq-answer">Clients typically see a 20-50% increase in conversion simply by being the first to reply in their market.</div>
             </div>
 
-            <!-- 5 -->
             <div class="faq-item reveal delay-1">
                 <button class="faq-question">
                     Do I need technical knowledge?
@@ -1536,7 +1476,6 @@
                 <div class="faq-answer">No. We handle everything from API logic to AI model training. You only need to focus on handling the new appointments.</div>
             </div>
 
-            <!-- 6 -->
             <div class="faq-item reveal delay-2">
                 <button class="faq-question">
                     Can you work with our existing tools?
@@ -1545,7 +1484,6 @@
                 <div class="faq-answer">Yes. We specialize in connecting scattered ecosystems. If your tools have an API, we can bridge them flawlessly.</div>
             </div>
 
-            <!-- 7 -->
             <div class="faq-item reveal delay-3">
                 <button class="faq-question">
                     What if we already tried bots and they failed?
@@ -1554,7 +1492,6 @@
                 <div class="faq-answer">Simple bots break. We build cognitive logic systems that understand context and intent, creating a natural feel for your clients.</div>
             </div>
 
-            <!-- 8 -->
             <div class="faq-item reveal delay-4">
                 <button class="faq-question">
                     Will automation replace our team?
@@ -1563,7 +1500,6 @@
                 <div class="faq-answer">No. It removes the routine. Your team stops wasting time on "Are you still interested?" and starts spending time closing high-value deals.</div>
             </div>
 
-            <!-- 9 -->
             <div class="faq-item reveal delay-1">
                 <button class="faq-question">
                     Is this expensive?
@@ -1572,7 +1508,6 @@
                 <div class="faq-answer">Compared to the cost of manual labor and lost leads, our systems are significantly cheaper. It's an investment in your infrastructure that pays for itself.</div>
             </div>
 
-            <!-- 10 -->
             <div class="faq-item reveal delay-2">
                 <button class="faq-question">
                     Do you offer ongoing support?
@@ -1584,11 +1519,9 @@
         </div>
     </section>
 
-    <!-- 9. FINAL CALL TO ACTION -->
     <section id="final-cta">
         <div class="final-cta-card reveal delay-1" style="position: relative; overflow: hidden; background: linear-gradient(145deg, #0a0a0a 0%, #050505 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 100px 40px; text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
             
-            <!-- Легкое свечение на фоне (эффект шапки) -->
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 800px; height: 800px; background: radial-gradient(circle, rgba(74, 158, 255, 0.05) 0%, transparent 60%); pointer-events: none; z-index: 0;"></div>
             
             <div style="position: relative; z-index: 1;">
@@ -1599,14 +1532,12 @@
                     Let’s turn them into paying clients. Instantly.
                 </p>
                 
-                <!-- Кнопка действия -->
                 <button onclick="openModal()" class="btn btn-primary" style="font-size: 1.05rem; padding: 18px 45px; border-radius: 10px; background: #fff; color: #000; font-weight: 500;">
                     Contact Us
                 </button>
             </div>
         </div>
     </section>
-    <!-- 10. ФУТЕР СО ВСЕМИ ИКОНКАМИ -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-left">
@@ -1632,7 +1563,6 @@
         </div>
     </footer>
 
-    <!-- МОДАЛКА -->
     <div id="leadModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
